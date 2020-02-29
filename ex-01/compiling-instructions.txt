@@ -1,0 +1,10 @@
+this is a Java RMI example program
+
+instuctions for running the program
+	1)execute makeMe.sh : this compiles the java files
+	2)execute runRegistry.sh
+	3)execute runServer.sh
+	4)execute runClient.sh
+
+then you can stop the server and registy
+
