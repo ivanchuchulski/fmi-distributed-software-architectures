@@ -1,0 +1,399 @@
+===
+=== parallel sum results === 
+===
+
+lisp@yoda:~/java/parallelSum/bin$ time java TaskRunner 1000000 1
+result: 499907947613
+
+real    0m0.307s
+user    0m0.236s
+sys     0m0.080s
+lisp@yoda:~/java/parallelSum/bin$ time java TaskRunner 1000000 2
+result: 499850064427
+
+real    0m0.257s
+user    0m0.440s
+sys     0m0.056s
+lisp@yoda:~/java/parallelSum/bin$ time java TaskRunner 1000000 3
+result: 500185734884
+
+real    0m0.257s
+user    0m0.552s
+sys     0m0.092s
+lisp@yoda:~/java/parallelSum/bin$ time java TaskRunner 1000000 4
+result: 500669654775
+
+real    0m0.308s
+user    0m0.764s
+sys     0m0.148s
+lisp@yoda:~/java/parallelSum/bin$ time java TaskRunner 1000000 5
+result: 499958829188
+
+real    0m0.308s
+user    0m1.116s
+sys     0m0.092s
+lisp@yoda:~/java/parallelSum/bin$ time java TaskRunner 1000000 6
+result: 499957471608
+
+real    0m0.362s
+user    0m1.240s
+sys     0m0.252s
+lisp@yoda:~/java/parallelSum/bin$ time java TaskRunner 1000000 7
+result: 499638237291
+
+real    0m0.320s
+user    0m1.116s
+sys     0m0.060s
+lisp@yoda:~/java/parallelSum/bin$ time java TaskRunner 1000000 8
+result: 499977642981
+
+real    0m0.256s
+user    0m1.064s
+sys     0m0.068s
+lisp@yoda:~/java/parallelSum/bin$
+
+===
+=== parallel partial multiplication results === 
+===
+
+lisp@yoda:~/java/parallelSum.pmul/bin$ time java TaskRunner 100000 1 > 100k-1.txt
+
+real    1m17.537s
+user    1m17.421s
+sys     0m1.528s
+lisp@yoda:~/java/parallelSum.pmul/bin$ time java TaskRunner 100000 2 > 100k-2.txt
+
+real    0m21.720s
+user    0m29.838s
+sys     0m0.792s
+lisp@yoda:~/java/parallelSum.pmul/bin$ time java TaskRunner 100000 3 > 100k-3.txt
+
+real    0m10.546s
+user    0m18.657s
+sys     0m0.444s
+lisp@yoda:~/java/parallelSum.pmul/bin$ time java TaskRunner 100000 4 > 100k-4.txt
+
+real    0m5.439s
+user    0m12.029s
+sys     0m0.464s
+lisp@yoda:~/java/parallelSum.pmul/bin$ time java TaskRunner 100000 5 > 100k-5.txt
+
+real    0m4.487s
+user    0m10.589s
+sys     0m0.188s
+lisp@yoda:~/java/parallelSum.pmul/bin$ time java TaskRunner 100000 6 > 100k-6.txt
+
+real    0m3.435s
+user    0m11.109s
+sys     0m0.252s
+lisp@yoda:~/java/parallelSum.pmul/bin$ time java TaskRunner 100000 7 > 100k-7.txt
+
+real    0m2.484s
+user    0m9.381s
+sys     0m0.232s
+lisp@yoda:~/java/parallelSum.pmul/bin$ time java TaskRunner 100000 8 > 100k-8.txt
+
+real    0m2.083s
+user    0m8.457s
+sys     0m0.280s
+lisp@yoda:~/java/parallelSum.pmul/bin$
+
+===
+=== parallel multiplication results 10k elements === 
+===
+
+lisp@yoda:~/java/parallelSum.mul/bin$ time java TaskRunner 10000 1 > 10k-1.txt
+
+real    0m0.806s
+user    0m0.960s
+sys     0m0.020s
+lisp@yoda:~/java/parallelSum.mul/bin$ time java TaskRunner 10000 2 > 10k-2.txt
+
+real    0m0.606s
+user    0m0.852s
+sys     0m0.040s
+lisp@yoda:~/java/parallelSum.mul/bin$ time java TaskRunner 10000 3 > 10k-3.txt
+
+real    0m0.554s
+user    0m0.824s
+sys     0m0.012s
+lisp@yoda:~/java/parallelSum.mul/bin$ time java TaskRunner 10000 4 > 10k-4.txt
+
+real    0m0.604s
+user    0m0.968s
+sys     0m0.036s
+lisp@yoda:~/java/parallelSum.mul/bin$ time java TaskRunner 10000 5 > 10k-5.txt
+
+real    0m0.604s
+user    0m0.952s
+sys     0m0.028s
+lisp@yoda:~/java/parallelSum.mul/bin$ time java TaskRunner 10000 6 > 10k-6.txt
+
+real    0m0.554s
+user    0m0.956s
+sys     0m0.028s
+lisp@yoda:~/java/parallelSum.mul/bin$ time java TaskRunner 10000 7 > 10k-7.txt
+
+real    0m0.604s
+user    0m1.168s
+sys     0m0.076s
+lisp@yoda:~/java/parallelSum.mul/bin$ time java TaskRunner 10000 8 > 10k-8.txt
+
+real    0m0.564s
+user    0m1.016s
+sys     0m0.064s
+lisp@yoda:~/java/parallelSum.mul/bin$ 
+
+===
+=== parallel multiplication results 100k elements === 
+===
+
+lisp@yoda:~/java/parallelSum.mul/bin$ time java TaskRunner 100000 1 > 100k-1.txt
+
+real    1m17.878s
+user    1m17.913s
+sys     0m1.484s
+lisp@yoda:~/java/parallelSum.mul/bin$ time java TaskRunner 100000 2 > 100k-2.txt
+
+real    0m56.505s
+user    1m4.536s
+sys     0m1.024s
+lisp@yoda:~/java/parallelSum.mul/bin$ time java TaskRunner 100000 3 > 100k-3.txt
+
+real    0m59.506s
+user    1m6.860s
+sys     0m0.944s
+lisp@yoda:~/java/parallelSum.mul/bin$ time java TaskRunner 100000 4 > 100k-4.txt
+
+real    0m52.793s
+user    1m0.892s
+sys     0m1.200s
+lisp@yoda:~/java/parallelSum.mul/bin$ time java TaskRunner 100000 5 > 100k-5.txt
+
+real    0m52.007s
+user    1m0.900s
+sys     0m0.612s
+lisp@yoda:~/java/parallelSum.mul/bin$ time java TaskRunner 100000 6 > 100k-6.txt
+
+real    0m51.396s
+user    0m58.480s
+sys     0m0.588s
+lisp@yoda:~/java/parallelSum.mul/bin$ time java TaskRunner 100000 7 > 100k-7.txt
+
+real    0m51.195s
+user    0m57.656s
+sys     0m0.300s
+lisp@yoda:~/java/parallelSum.mul/bin$ time java TaskRunner 100000 8 > 100k-8.txt
+
+real    0m59.002s
+user    1m5.020s
+sys     0m0.752s
+lisp@yoda:~/java/parallelSum.mul/bin$
+
+===
+=== youda cpu summary ===
+===
+
+lisp@yoda:~/java/parallelSum.mul/bin$ cat /proc/cpuinfo
+processor       : 0
+vendor_id       : GenuineIntel
+cpu family      : 6
+model           : 26
+model name      : Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz
+stepping        : 5
+cpu MHz         : 1999.887
+cache size      : 8192 KB
+physical id     : 1
+siblings        : 8
+core id         : 0
+cpu cores       : 4
+apicid          : 16
+initial apicid  : 16
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 11
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology tsc_reliable nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 popcnt lahf_lm tpr_shadow vnmi flexpriority ept vpid
+bogomips        : 3999.77
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 40 bits physical, 48 bits virtual
+power management:
+
+processor       : 1
+vendor_id       : GenuineIntel
+cpu family      : 6
+model           : 26
+model name      : Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz
+stepping        : 5
+cpu MHz         : 1999.887
+cache size      : 8192 KB
+physical id     : 1
+siblings        : 8
+core id         : 1
+cpu cores       : 4
+apicid          : 18
+initial apicid  : 18
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 11
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology tsc_reliable nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 popcnt lahf_lm tpr_shadow vnmi flexpriority ept vpid
+bogomips        : 3999.99
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 40 bits physical, 48 bits virtual
+power management:
+
+processor       : 2
+vendor_id       : GenuineIntel
+cpu family      : 6
+model           : 26
+model name      : Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz
+stepping        : 5
+cpu MHz         : 1999.887
+cache size      : 8192 KB
+physical id     : 1
+siblings        : 8
+core id         : 2
+cpu cores       : 4
+apicid          : 20
+initial apicid  : 20
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 11
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology tsc_reliable nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 popcnt lahf_lm tpr_shadow vnmi flexpriority ept vpid
+bogomips        : 3999.99
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 40 bits physical, 48 bits virtual
+power management:
+
+processor       : 3
+vendor_id       : GenuineIntel
+cpu family      : 6
+model           : 26
+model name      : Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz
+stepping        : 5
+cpu MHz         : 1999.887
+cache size      : 8192 KB
+physical id     : 1
+siblings        : 8
+core id         : 3
+cpu cores       : 4
+apicid          : 22
+initial apicid  : 22
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 11
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology tsc_reliable nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 popcnt lahf_lm tpr_shadow vnmi flexpriority ept vpid
+bogomips        : 3999.99
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 40 bits physical, 48 bits virtual
+power management:
+
+processor       : 4
+vendor_id       : GenuineIntel
+cpu family      : 6
+model           : 26
+model name      : Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz
+stepping        : 5
+cpu MHz         : 1999.887
+cache size      : 8192 KB
+physical id     : 1
+siblings        : 8
+core id         : 0
+cpu cores       : 4
+apicid          : 17
+initial apicid  : 17
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 11
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology tsc_reliable nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 popcnt lahf_lm tpr_shadow vnmi flexpriority ept vpid
+bogomips        : 4000.00
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 40 bits physical, 48 bits virtual
+power management:
+
+processor       : 5
+vendor_id       : GenuineIntel
+cpu family      : 6
+model           : 26
+model name      : Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz
+stepping        : 5
+cpu MHz         : 1999.887
+cache size      : 8192 KB
+physical id     : 1
+siblings        : 8
+core id         : 1
+cpu cores       : 4
+apicid          : 19
+initial apicid  : 19
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 11
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology tsc_reliable nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 popcnt lahf_lm tpr_shadow vnmi flexpriority ept vpid
+bogomips        : 4000.01
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 40 bits physical, 48 bits virtual
+power management:
+
+processor       : 6
+vendor_id       : GenuineIntel
+cpu family      : 6
+model           : 26
+model name      : Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz
+stepping        : 5
+cpu MHz         : 1999.887
+cache size      : 8192 KB
+physical id     : 1
+siblings        : 8
+core id         : 2
+cpu cores       : 4
+apicid          : 21
+initial apicid  : 21
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 11
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology tsc_reliable nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 popcnt lahf_lm tpr_shadow vnmi flexpriority ept vpid
+bogomips        : 4000.00
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 40 bits physical, 48 bits virtual
+power management:
+
+processor       : 7
+vendor_id       : GenuineIntel
+cpu family      : 6
+model           : 26
+model name      : Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz
+stepping        : 5
+cpu MHz         : 1999.887
+cache size      : 8192 KB
+physical id     : 1
+siblings        : 8
+core id         : 3
+cpu cores       : 4
+apicid          : 23
+initial apicid  : 23
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 11
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology tsc_reliable nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 popcnt lahf_lm tpr_shadow vnmi flexpriority ept vpid
+bogomips        : 4000.00
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 40 bits physical, 48 bits virtual
+power management:
+
+lisp@yoda:~/java/parallelSum.mul/bin$
+
