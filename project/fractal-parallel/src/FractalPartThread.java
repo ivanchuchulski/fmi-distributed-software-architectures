@@ -143,9 +143,16 @@ public class FractalPartThread extends Thread {
 		Complex zPrevious = z0;
 		Complex zIteration = null;
 		Double realPartOfZPrevious = null;
-		int steps = 0;
 
-		final int maxIterations = 640;
+		int steps = 0;
+		final int maxIterations = 1000;
+		final Complex limit = new Complex(4, 0);
+
+//		while ((zPrevious.getReal() * zPrevious.getReal() + zPrevious.getImaginary() * zPrevious.getImaginary() < 4) && steps < maxIterations) {
+//			zIteration = calculateIterationTerm(zPrevious, c);
+//			zPrevious = zIteration;
+//			steps++;
+//		}
 
 		for (int i = 0; i < maxIterations; i++) {
 			zIteration = calculateIterationTerm(zPrevious, c);
