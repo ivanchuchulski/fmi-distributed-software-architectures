@@ -33,8 +33,10 @@ public class FractalPartThread extends Thread {
 
 //				printInfoAboutPoint(xPixel, yPixel, realValue, imaginaryValue, r);
 
-				// blackAndWhiteOutput(bufferedImage, xPixel, yPixel, r);
-				coloredOutput(bufferedImage, xPixel, yPixel, numberOfSteps);
+//				int color = blackAndWhiteOutput(bufferedImage, xPixel, yPixel, r);
+				int color = getIterationColor(bufferedImage, xPixel, yPixel, numberOfSteps);
+
+				drawPixel(bufferedImage, xPixel, yPixel, color);
 			}
 		}
 
@@ -42,9 +44,63 @@ public class FractalPartThread extends Thread {
 		long threadOverallTime = threadFinishTimeStamp - threadStartTimestamp;
 
 		if (!Main.quietOutput) {
-			System.out.printf("Thread-%d stopped.%n", index);
+			System.out.printf("Thread-%d stopped%n", index);
 			System.out.printf("Thread-%d execution time was (millis): %d%n", index, threadOverallTime);
 		}
+	}
+
+	/**
+	 *
+	 * @param constant point on the complex plane to check whether is in the fractal set
+	 * @return number of iterations until the sequence becomes unbounded and goes to infinity,
+	 * if 0 is returned, it means the sequence remains bound and the point is in the fractal set
+	 */
+	private static int calculateNumberOfSteps(Complex constant) {
+		final Complex z0 = new Complex(0.0, 0.0);
+		Complex zPrevious = z0;
+		Complex zIteration = null;
+		Double realPartOfZPrevious = null;
+
+		int iterations = 0;
+		final int maxIterations = 1000;
+
+		for (int i = 0; i < maxIterations; i++) {
+			zIteration = calculateIterationTerm(zPrevious, constant);
+			zPrevious = zIteration;
+
+			realPartOfZPrevious = zPrevious.getReal();
+
+			if (realPartOfZPrevious.isInfinite() || realPartOfZPrevious.isNaN()) {
+				iterations = i;
+				break;
+			}
+		}
+
+//		System.out.println("iter: " + iterations + "; " + zIteration.getReal() + ", " + zIteration.getImaginary());
+
+		return iterations;
+	}
+
+	private static Complex calculateIterationTerm(Complex z, Complex constant) {
+//		formula project num 16 : F(Z) = C*e^(-Z) + Z^2
+		// Complex minusZ = z.multiply(-1);
+		// Complex exponentRaisedToTheMinusZ = minusZ.exp();
+		// Complex zSquared = z.multiply(z);
+
+		// return (constant.multiply(exponentRaisedToTheMinusZ)).add(zSquared);
+
+
+//		formula project num 17 : F(Z) = e^(cos(C*Z))
+		Complex constantTimesZ = constant.multiply(z);
+		Complex cosine = constantTimesZ.cos();
+
+		return cosine.exp();
+
+//		formula project num 19 : F(Z) = e^(Z^2 * C)
+//		Complex zSquared = z.multiply(z);
+//		Complex zSquaredTimesConstant = zSquared.multiply(constant);
+//
+//		return zSquaredTimesConstant.exp();
 	}
 
 	private static void printInfoAboutPoint(int xPixel, int yPixel, double realValue, double imaginaryValue, int r) {
@@ -63,133 +119,83 @@ public class FractalPartThread extends Thread {
 		return y * (range / height) + minImaginary;
 	}
 
-	private static void blackAndWhiteOutput(BufferedImage bufferedImage, int xPixel, int yPixel, int numberOfSteps) {
-		if (numberOfSteps == 0) {
-			bufferedImage.setRGB(xPixel, yPixel, 0x000000);
+	private static int blackAndWhiteOutput(BufferedImage bufferedImage, int xPixel, int yPixel, int iterations) {
+		if (iterations == 0) {
+			return 0x000000;
 		}
 		else {
-			bufferedImage.setRGB(xPixel, yPixel, 0xffffff);
+			return 0xffffff;
 		}
 	}
 
-	private static void coloredOutput(BufferedImage bufferedImage, int xPixel, int yPixel, int numberOfSteps) {
-		if (numberOfSteps == 0) {
-			bufferedImage.setRGB(xPixel, yPixel, 0x00ff00);
+	private static int getIterationColor(BufferedImage bufferedImage, int xPixel, int yPixel, int iterations) {
+		if (iterations == 0) {
+			return 0x00ff00;
 		}
-		else if (numberOfSteps <= 10) { // outside ... (rapid move)
-			bufferedImage.setRGB(xPixel, yPixel, 0xFFFFFF);
+		else if (iterations <= 10) {
+			return 0xFFFFFF;
 		}
-		else if (numberOfSteps == 11) {
-			bufferedImage.setRGB(xPixel, yPixel, 0x0000ff);
+		else if (iterations == 11) {
+			return 0x0000ff;
 		}
-		else if (numberOfSteps == 12) {
-			bufferedImage.setRGB(xPixel, yPixel, 0x0000ee);
+		else if (iterations == 12) {
+			return 0x0000ee;
 		}
-		else if (numberOfSteps == 13) {
-			bufferedImage.setRGB(xPixel, yPixel, 0x0000dd);
+		else if (iterations == 13) {
+			return 0x0000dd;
 		}
-		else if (numberOfSteps == 14) {
-			bufferedImage.setRGB(xPixel, yPixel, 0x0000cc);
+		else if (iterations == 14) {
+			return 0x0000cc;
 		}
-		else if (numberOfSteps == 15) {
-			bufferedImage.setRGB(xPixel, yPixel, 0x0000bb);
+		else if (iterations == 15) {
+			return 0x0000bb;
 		}
-		else if (numberOfSteps == 16) {
-			bufferedImage.setRGB(xPixel, yPixel, 0x0000aa);
+		else if (iterations == 16) {
+			return 0x0000aa;
 		}
-		else if (numberOfSteps == 17) {
-			bufferedImage.setRGB(xPixel, yPixel, 0x000099);
+		else if (iterations == 17) {
+			return 0x000099;
 		}
-		else if (numberOfSteps == 18) {
-			bufferedImage.setRGB(xPixel, yPixel, 0x000088);
+		else if (iterations == 18) {
+			return 0x000088;
 		}
-		else if (numberOfSteps == 19) {
-			bufferedImage.setRGB(xPixel, yPixel, 0x000077);
+		else if (iterations == 19) {
+			return 0x000077;
 		}
-		else if (numberOfSteps == 20) {
-			bufferedImage.setRGB(xPixel, yPixel, 0x000066);
+		else if (iterations == 20) {
+			return 0x000066;
 		}
-		else if (numberOfSteps <= 30) {
-			bufferedImage.setRGB(xPixel, yPixel, 0x666600);
+		else if (iterations <= 30) {
+			return 0x666600;
 		}
-		else if (numberOfSteps <= 40) {
-			bufferedImage.setRGB(xPixel, yPixel, 0x777700);
+		else if (iterations <= 40) {
+			return 0x777700;
 		}
-		else if (numberOfSteps <= 50) {
-			bufferedImage.setRGB(xPixel, yPixel, 0x888800);
+		else if (iterations <= 50) {
+			return 0x888800;
 		}
-		else if (numberOfSteps <= 100) {
-			bufferedImage.setRGB(xPixel, yPixel, 0x999900);
+		else if (iterations <= 100) {
+			return 0x999900;
 		}
-		else if (numberOfSteps <= 150) {
-			bufferedImage.setRGB(xPixel, yPixel, 0xaaaa00);
+		else if (iterations <= 150) {
+			return 0xaaaa00;
 		}
-		else if (numberOfSteps <= 200) {
-			bufferedImage.setRGB(xPixel, yPixel, 0xbbbb00);
+		else if (iterations <= 200) {
+			return 0xbbbb00;
 		}
-		else if (numberOfSteps <= 250) {
-			bufferedImage.setRGB(xPixel, yPixel, 0xcccc00);
+		else if (iterations <= 250) {
+			return 0xcccc00;
 		}
-		else if (numberOfSteps <= 300) {
-			bufferedImage.setRGB(xPixel, yPixel, 0xdddd00);
+		else if (iterations <= 300) {
+			return 0xdddd00;
 		}
 		else {
-			bufferedImage.setRGB(xPixel, yPixel, 0xeeee00);
+			return 0xeeee00;
 		}
 	}
 
-	public static int calculateNumberOfSteps(Complex c) {
-		Complex z0 = new Complex(0.0, 0.0);
-		Complex zPrevious = z0;
-		Complex zIteration = null;
-		Double realPartOfZPrevious = null;
-
-		int steps = 0;
-		final int maxIterations = 1000;
-		final Complex limit = new Complex(4, 0);
-
-//		while ((zPrevious.getReal() * zPrevious.getReal() + zPrevious.getImaginary() * zPrevious.getImaginary() < 4) && steps < maxIterations) {
-//			zIteration = calculateIterationTerm(zPrevious, c);
-//			zPrevious = zIteration;
-//			steps++;
-//		}
-
-		for (int i = 0; i < maxIterations; i++) {
-			zIteration = calculateIterationTerm(zPrevious, c);
-			zPrevious = zIteration;
-
-			realPartOfZPrevious = zPrevious.getReal();
-
-			if (realPartOfZPrevious.isInfinite() || realPartOfZPrevious.isNaN()) {
-				steps = i;
-				break;
-			}
-		}
-
-//		System.out.println("s: " + steps + ", " + z_i.getReal() + ", " + z_i.getImaginary());
-
-		return steps;
-	}
-
-	public static Complex calculateIterationTerm(Complex z, Complex constant) {
-//		formula project num 16 : F(Z) = C*e^(-Z) + Z^2
-		// Complex minusZ = z.multiply(-1);
-		// Complex exponentRaisedToTheMinusZ = minusZ.exp();
-		// Complex zSquared = z.multiply(z);
-
-		// return (constant.multiply(exponentRaisedToTheMinusZ)).add(zSquared);
-
-
-//		formula project num 17 : F(Z) = e^(cos(C*Z))
-		 Complex constantTimesZ = constant.multiply(z);
-		 Complex cosine = constantTimesZ.cos();
-
-		 return cosine.exp();
-
-//		formula project num 19 : F(Z) = e^(Z^2 * C)
-//		Complex zSquared = z.multiply(z);
-//		Complex zSquaredTimesConstant = zSquared.multiply(constant);
-//
-//		return zSquaredTimesConstant.exp();
+//	maybe make the method synchronized
+	private synchronized void drawPixel(BufferedImage bufferedImage, int xPixel, int yPixel, int color) {
+		bufferedImage.setRGB(xPixel, yPixel, color);
 	}
 }

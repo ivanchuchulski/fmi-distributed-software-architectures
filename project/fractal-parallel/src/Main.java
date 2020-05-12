@@ -21,7 +21,7 @@ public class Main {
 	public static double minImaginary = -2.0;
 	public static double maxImaginary = 2.0;
 
-	public static String outputFileName = "zad19.png";
+	public static String outputFileName = "test.png";
 
 	public static boolean quietOutput = false;
 
@@ -89,8 +89,8 @@ public class Main {
 
 		try {
 			ImageIO.write(bufferedImage, "PNG", new File(outputFileName));
-			// ImageIO.write(bufferedImage, "PNG", new File("image-outputs/blackWhite.png"));
-			// ImageIO.write(bufferedImage, "PNG", new File("image-outputs/colored-test.png"));
+//			 ImageIO.write(bufferedImage, "PNG", new File("image-outputs/blackWhite.png"));
+//			 ImageIO.write(bufferedImage, "PNG", new File("image-outputs/colored.png"));
 		}
 		catch (IOException ioException) {
 			ioException.printStackTrace();
@@ -100,12 +100,10 @@ public class Main {
 		long finishTimestamp = Calendar.getInstance().getTimeInMillis();
 		long overallTime = finishTimestamp - startTimestamp;
 
-		if (quietOutput) {
-			System.out.println(overallTime);
-		}
-		else {
+		System.out.printf("Total execution time for current run (millis): %d%n", overallTime);
+
+		if (!quietOutput) {
 			System.out.printf("Threads used in current run: %d%n", threadCount);
-			System.out.printf("Total execution time for current run (millis): %d%n", overallTime);
 		}
 	}
 
@@ -117,9 +115,15 @@ public class Main {
 		options.addOption("t", true, "number of tasks(threads)");
 		options.addOption("o", true, "name of the output file");
 		options.addOption("q", false, "quiet running of program, without additional logs");
+		options.addOption("h", false, "print information about the program");
 
 		CommandLineParser parser = new DefaultParser();
 		CommandLine commandLine = parser.parse(options, args);
+
+		if (commandLine.hasOption("h")) {
+			printHelp(options);
+			System.exit(1);
+		}
 
 		if (commandLine.hasOption("s")) {
 			String[] imageDimensions = commandLine.getOptionValue("s").split("x");
@@ -146,5 +150,13 @@ public class Main {
 		if (commandLine.hasOption("q")) {
 			quietOutput = true;
 		}
+	}
+
+	private static void printHelp(Options options) {
+		String header = "program calculating fractal image\n";
+		String footer = "author : Ivan Chuchulski\n";
+		HelpFormatter helpFormatter = new HelpFormatter();
+
+		helpFormatter.printHelp("runMe", header, options, footer);
 	}
 }
