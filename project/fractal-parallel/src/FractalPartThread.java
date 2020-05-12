@@ -61,8 +61,9 @@ public class FractalPartThread extends Thread {
 		Complex zIteration = null;
 		Double realPartOfZPrevious = null;
 
+		// maybe tweak maxIterations, 1000 is to much, maybe 500 or little bit less
 		int iterations = 0;
-		final int maxIterations = 1000;
+		final int maxIterations = 500;
 
 		for (int i = 0; i < maxIterations; i++) {
 			zIteration = calculateIterationTerm(zPrevious, constant);
@@ -195,7 +196,7 @@ public class FractalPartThread extends Thread {
 	}
 
 //	maybe make the method synchronized
-	private synchronized void drawPixel(BufferedImage bufferedImage, int xPixel, int yPixel, int color) {
+	private void drawPixel(BufferedImage bufferedImage, int xPixel, int yPixel, int color) {
 		bufferedImage.setRGB(xPixel, yPixel, color);
 	}
 }
