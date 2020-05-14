@@ -1,12 +1,10 @@
-import org.apache.commons.math3.complex.Complex;
-import org.apache.commons.math3.optim.nonlinear.scalar.noderiv.BOBYQAOptimizer;
-
 import java.awt.image.BufferedImage;
 import java.util.Calendar;
 import java.util.Vector;
+import org.apache.commons.math3.complex.Complex;
 
 public class FractalPartThread extends Thread {
-	final private int index;
+	private final int index;
 	private final BufferedImage bufferedImage;
 	private final Vector<Boolean> tasks;
 
@@ -40,10 +38,7 @@ public class FractalPartThread extends Thread {
 
                     int numberOfSteps = calculateNumberOfSteps(new Complex(realValue, imaginaryValue));
 
-//    				printInfoAboutPoint(xPixel, yPixel, realValue, imaginaryValue, r);
-//    				int color = blackAndWhiteOutput(bufferedImage, xPixel, yPixel, r);
-
-                    int color = getIterationColor(bufferedImage, xPixel, yPixel, numberOfSteps);
+                    int color = getIterationColor(numberOfSteps);
 
                     drawPixel(bufferedImage, xPixel, yPixel, color);
                 }
@@ -56,30 +51,35 @@ public class FractalPartThread extends Thread {
                     System.out.printf("Thread-%d stopped%n", index);
                     System.out.printf("Thread-%d execution time was (millis): %d%n", index, threadOverallTime);
                 }
+
                 return;
             }
         }
     }
 
-    private synchronized void markTaskAsTaken(int rowAvailable) {
-        tasks.setElementAt(true, rowAvailable);
-    }
-
-    /**
-     *
-     * @return
-     */
-    private synchronized int findFirstAvailableTask() {
+	/**
+	 * finds the first available row at the image to be processed
+	 * @return the index of the row to be processed, or -1 of all is taken
+	 */
+	private synchronized int findFirstAvailableTask() {
 		return tasks.indexOf(false);
 	}
 
 	/**
-	 *
-	 * @param constant point on the complex plane to check whether is in the fractal set
-	 * @return number of iterations until the sequence becomes unbounded and goes to infinity,
-	 * if 0 is returned, it means the sequence remains bound and the point is in the fractal set
+	 * marks the given row as taken for calculation, and other rows should not take it
+	 * @param rowAvailable
 	 */
-	private static int calculateNumberOfSteps(Complex constant) {
+	private synchronized void markTaskAsTaken(int rowAvailable) {
+        tasks.setElementAt(true, rowAvailable);
+    }
+
+	/**
+	 * calculates the number of steps for the given point
+	 * @param complexPoint point on the complex plane to check whether is in the fractal set
+	 * @return number of iterations until the sequence becomes unbounded and goes to infinity,
+	 * if 0 is returned, it means the sequence for the point converges and the point is in the fractal set
+	 */
+	private static int calculateNumberOfSteps(Complex complexPoint) {
 		final Complex z0 = new Complex(0.0, 0.0);
 		Complex zPrevious = z0;
 		Complex zIteration = null;
@@ -90,7 +90,7 @@ public class FractalPartThread extends Thread {
 		final int maxIterations = 500;
 
 		for (int i = 0; i < maxIterations; i++) {
-			zIteration = calculateIterationTerm(zPrevious, constant);
+			zIteration = calculateIterationTerm(zPrevious, complexPoint);
 			zPrevious = zIteration;
 
 			realPartOfZPrevious = zPrevious.getReal();
@@ -108,12 +108,11 @@ public class FractalPartThread extends Thread {
 
 	private static Complex calculateIterationTerm(Complex z, Complex constant) {
 //		formula project num 16 : F(Z) = C*e^(-Z) + Z^2
-		// Complex minusZ = z.multiply(-1);
-		// Complex exponentRaisedToTheMinusZ = minusZ.exp();
-		// Complex zSquared = z.multiply(z);
+//		 Complex minusZ = z.multiply(-1);
+//		 Complex exponentRaisedToTheMinusZ = minusZ.exp();
+//		 Complex zSquared = z.multiply(z);
 
 		// return (constant.multiply(exponentRaisedToTheMinusZ)).add(zSquared);
-
 
 //		formula project num 17 : F(Z) = e^(cos(C*Z))
 		Complex constantTimesZ = constant.multiply(z);
@@ -153,7 +152,12 @@ public class FractalPartThread extends Thread {
 		}
 	}
 
-	private static int getIterationColor(BufferedImage bufferedImage, int xPixel, int yPixel, int iterations) {
+	/**
+	 * get the pixel color, according to the number of steps
+	 * @param iterations number of iterations for a specific point
+	 * @return integer hex value, representing the pixel color, on 0 iterations green color is returned
+	 */
+	private static int getIterationColor(int iterations) {
 		if (iterations == 0) {
 			return 0x00ff00;
 		}
@@ -219,7 +223,6 @@ public class FractalPartThread extends Thread {
 		}
 	}
 
-//	maybe make the method synchronized
 	private synchronized void drawPixel(BufferedImage bufferedImage, int xPixel, int yPixel, int color) {
 		bufferedImage.setRGB(xPixel, yPixel, color);
 	}
