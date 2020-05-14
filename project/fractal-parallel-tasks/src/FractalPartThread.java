@@ -30,7 +30,7 @@ public class FractalPartThread extends Thread {
             if (rowAvailable != -1) {
                 markTaskAsTaken(rowAvailable);
 
-                System.out.printf("thread %d working on row %d%n", index, rowAvailable);
+//                System.out.printf("thread %d working on row %d%n", index, rowAvailable);
 
                 int yPixel = rowAvailable;
 
@@ -220,7 +220,7 @@ public class FractalPartThread extends Thread {
 	}
 
 //	maybe make the method synchronized
-	private void drawPixel(BufferedImage bufferedImage, int xPixel, int yPixel, int color) {
+	private synchronized void drawPixel(BufferedImage bufferedImage, int xPixel, int yPixel, int color) {
 		bufferedImage.setRGB(xPixel, yPixel, color);
 	}
 }

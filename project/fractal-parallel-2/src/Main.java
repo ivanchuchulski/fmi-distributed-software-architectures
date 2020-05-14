@@ -96,19 +96,25 @@ public class Main {
 		graphics2D.fillRect(0, 0, width - 1, height - 1);
 
 //		TODO : make it work when rows are unevenly spread
-		int imageIndex = 1;
-		int imageStartingRow = 0;
-		for (BufferedImage threadBufferedImage : threadBufferedImages) {
-			for (int yPixel = imageStartingRow; yPixel < numberOfRowsPerThread * imageIndex; yPixel++) {
-				for (int xPixel = 0; xPixel < Main.width; xPixel++) {
-					 int pixelColor = threadBufferedImage.getRGB(xPixel, yPixel);
-					 bufferedImage.setRGB(xPixel, yPixel, pixelColor);
-				}
-			}
+//		int imageIndex = 1;
+//		int imageStartingRow = 0;
+//		for (BufferedImage threadBufferedImage : threadBufferedImages) {
+//			for (int yPixel = imageStartingRow; yPixel < numberOfRowsPerThread * imageIndex; yPixel++) {
+//				for (int xPixel = 0; xPixel < Main.width; xPixel++) {
+//					 int pixelColor = threadBufferedImage.getRGB(xPixel, yPixel);
+//					 bufferedImage.setRGB(xPixel, yPixel, pixelColor);
+//				}
+//			}
+//
+//			imageStartingRow += numberOfRowsPerThread;
+//			imageIndex++;
+//		}
 
-			imageStartingRow += numberOfRowsPerThread;
-			imageIndex++;
-		}
+//		int imageHeight = 0;
+//		for (BufferedImage threadBufferedImage : threadBufferedImages) {
+//			graphics2D.drawImage(threadBufferedImage, null, 0, imageHeight);
+//			imageHeight += threadBufferedImage.getHeight();
+//		}
 
 
 		graphics2D.setColor(Color.GRAY);
