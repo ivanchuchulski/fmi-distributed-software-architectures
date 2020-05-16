@@ -1,12 +1,11 @@
 #!/bin/bash
 
 function testWithMultipleRuns() {    
-    for thread in {1..3}
+    for thread in {1..5}
     do
         for run in {1..5}
         do
-            bash ./run.sh -t 4 "${thread}" >> out.txt
-            wait $!
+            echo "the stuff"
         done
     done
 }
@@ -15,8 +14,12 @@ function testWithMultipleRuns() {
 function testWithSingleRun() {
     for thread in {1..5}
     do
-        bash ./run.sh -t "${thread}" >> out.txt
+        options="-t ${thread} -s 1280x960"
+        
+        bash ./runMe.sh "${options}" >> out.txt
         wait $!
+
+        echo "" >> out.txt
     done
 }
 

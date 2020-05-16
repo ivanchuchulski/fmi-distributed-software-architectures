@@ -22,7 +22,7 @@ public class Main {
 	public static double minImaginary = -2.0;
 	public static double maxImaginary = 2.0;
 
-	public static String outputFileName = "test.png";
+	public static String outputFileName = "image.png";
 
 	public static boolean quietOutput = false;
 
