@@ -26,8 +26,6 @@ public class Main {
 
 	public static boolean quietOutput = false;
 
-	public static Vector<Boolean> tasks;
-
 	public static void main(String[] args) {
 		long startTimestamp = Calendar.getInstance().getTimeInMillis();
 
@@ -40,7 +38,7 @@ public class Main {
 		}
 
 		// init tasks
-		tasks = new Vector<>();
+		Vector<Boolean> tasks = new Vector<>();
 		for (int i = 0; i < Main.height; i++) {
 			tasks.add(false);
 		}
@@ -53,10 +51,9 @@ public class Main {
 
 		ArrayList<FractalPartThread> fractalThreads = new ArrayList<>(threadCount);
 
-
-
 		for (int threadIndex = 1; threadIndex <= threadCount; threadIndex++) {
 			FractalPartThread fractalPartThread = new FractalPartThread(threadIndex, bufferedImage, tasks);
+
 			fractalThreads.add(fractalPartThread);
 
 			fractalPartThread.start();
@@ -77,8 +74,6 @@ public class Main {
 
 		try {
 			ImageIO.write(bufferedImage, "PNG", new File(outputFileName));
-//			 ImageIO.write(bufferedImage, "PNG", new File("image-outputs/blackWhite.png"));
-//			 ImageIO.write(bufferedImage, "PNG", new File("image-outputs/colored.png"));
 		}
 		catch (IOException ioException) {
 			ioException.printStackTrace();
