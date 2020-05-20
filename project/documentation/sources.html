@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<p>
+			<a href="http://courses.cecs.anu.edu.au/courses/COMP4300/lectures/embParallel.pdf">[1]</a>
+		</p>
+		<p>
+			<a href="https://www3.nd.edu/~dthain/courses/cse30341/spring2020/project3/">[2]</a>
+			решение на С, в което се говори за итеративна, паралелна по равен брой, паралелна по задачи
+		</p>
+		<p>
+			<a href="https://tuhrig.de/calculating-mandelbrot-set-with-java-tasks/">[3]</a>
+		</p>
+
+		<p>
+			моето решение : load balancing и ?гранулярност
+		</p>
+		<p>
+			в единия случай на всяка нишка се дава фиксиран брой редове от избражението, чрез индексите им
+		</p>
+		<p>
+			във втория случай всеки хоризонтален ред от изображението се задава като необработена задача,
+			после всяка нишка търси следващия необработен ред, ако има такъв го маркира, че започва работа
+			по него и го обработва до края, ако няма необработена задача, нишката приключва. Нишките се
+			използват оптимално и имат равен load balancing
+		</p>
+	</body>
+</html>
