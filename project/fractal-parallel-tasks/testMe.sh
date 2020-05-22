@@ -1,20 +1,9 @@
 #!/bin/bash
 
-function testWithMultipleRuns() {    
-    for thread in {1..5}
-    do
-        for run in {1..5}
-        do
-            echo "the stuff"
-        done
-    done
-}
-
-
-function testWithSingleRun() {
-    output="output.txt"
-	maxThreads=20
-    imageSize="1280x960"
+function testImageSmall() {
+    local output="output-small-image.txt"
+	local maxThreads=20
+    local imageSize="640x480"
 	    
 	truncate -s 0 "${output}"
     
@@ -24,7 +13,7 @@ function testWithSingleRun() {
 
     for thread in $(seq "${maxThreads}")
     do
-        options="-t ${thread} -s ${imageSize}"
+        local options="-q -t ${thread} -s ${imageSize}"
         bash ./runMe.sh "${options}" >> "${output}"
         wait $!
 
@@ -32,6 +21,27 @@ function testWithSingleRun() {
     done
 }
 
+function testImageBig() {
+    local output="output-big-image.txt"
+	local maxThreads=20
+    local imageSize="1280x960"
+	    
+	truncate -s 0 "${output}"
+    
+	date >> "${output}"
+    echo "maxThreads : ${maxThreads}" >> "${output}"
+    echo "imageSize : ${imageSize}" >> "${output}"
 
-testWithSingleRun
+    for thread in $(seq "${maxThreads}")
+    do
+        local options="-q -t ${thread} -s ${imageSize}"
+        bash ./runMe.sh "${options}" >> "${output}"
+        wait $!
 
+        echo "" >> "${output}"
+    done
+}
+
+testImageSmall
+
+testImageBig
