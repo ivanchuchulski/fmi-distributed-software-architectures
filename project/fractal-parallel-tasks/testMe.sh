@@ -13,7 +13,7 @@ function testWithMultipleRuns() {
 
 function testWithSingleRun() {
     maxThreads=20
-    imageSize="640x480"
+    imageSize="1280x960"
     
     date >> out.txt
     echo "${maxThreads}" >> out.txt
