@@ -1,0 +1,143 @@
+Fri May 22 15:36:13 EEST 2020
+maxThreads : 20
+imageSize : 640x480
+thread : 1
+Total execution time for current run (millis): 30250
+Total execution time for current run (millis): 30751
+Total execution time for current run (millis): 30007
+Total execution time for current run (millis): 30526
+Total execution time for current run (millis): 31256
+
+thread : 2
+Total execution time for current run (millis): 16084
+Total execution time for current run (millis): 16013
+Total execution time for current run (millis): 15837
+Total execution time for current run (millis): 16039
+Total execution time for current run (millis): 16164
+
+thread : 3
+Total execution time for current run (millis): 11008
+Total execution time for current run (millis): 11071
+Total execution time for current run (millis): 11090
+Total execution time for current run (millis): 11519
+Total execution time for current run (millis): 11157
+
+thread : 4
+Total execution time for current run (millis): 8618
+Total execution time for current run (millis): 8785
+Total execution time for current run (millis): 8585
+Total execution time for current run (millis): 8524
+Total execution time for current run (millis): 8539
+
+thread : 5
+Total execution time for current run (millis): 7209
+Total execution time for current run (millis): 7090
+Total execution time for current run (millis): 7441
+Total execution time for current run (millis): 7093
+Total execution time for current run (millis): 7268
+
+thread : 6
+Total execution time for current run (millis): 6260
+Total execution time for current run (millis): 6199
+Total execution time for current run (millis): 6049
+Total execution time for current run (millis): 6018
+Total execution time for current run (millis): 6368
+
+thread : 7
+Total execution time for current run (millis): 5559
+Total execution time for current run (millis): 5429
+Total execution time for current run (millis): 5429
+Total execution time for current run (millis): 5409
+Total execution time for current run (millis): 5440
+
+thread : 8
+Total execution time for current run (millis): 4828
+Total execution time for current run (millis): 4978
+Total execution time for current run (millis): 4904
+Total execution time for current run (millis): 4819
+Total execution time for current run (millis): 4781
+
+thread : 9
+Total execution time for current run (millis): 4378
+Total execution time for current run (millis): 4349
+Total execution time for current run (millis): 4360
+Total execution time for current run (millis): 4423
+Total execution time for current run (millis): 4348
+
+thread : 10
+Total execution time for current run (millis): 4052
+Total execution time for current run (millis): 4064
+Total execution time for current run (millis): 4159
+Total execution time for current run (millis): 4026
+Total execution time for current run (millis): 4056
+
+thread : 11
+Total execution time for current run (millis): 3785
+Total execution time for current run (millis): 3732
+Total execution time for current run (millis): 3782
+Total execution time for current run (millis): 3702
+Total execution time for current run (millis): 3791
+
+thread : 12
+Total execution time for current run (millis): 3583
+Total execution time for current run (millis): 3477
+Total execution time for current run (millis): 3588
+Total execution time for current run (millis): 3595
+Total execution time for current run (millis): 3556
+
+thread : 13
+Total execution time for current run (millis): 3366
+Total execution time for current run (millis): 3534
+Total execution time for current run (millis): 3360
+Total execution time for current run (millis): 3442
+Total execution time for current run (millis): 3704
+
+thread : 14
+Total execution time for current run (millis): 3222
+Total execution time for current run (millis): 3338
+Total execution time for current run (millis): 3304
+Total execution time for current run (millis): 3489
+Total execution time for current run (millis): 3249
+
+thread : 15
+Total execution time for current run (millis): 3105
+Total execution time for current run (millis): 2987
+Total execution time for current run (millis): 3065
+Total execution time for current run (millis): 3143
+Total execution time for current run (millis): 3463
+
+thread : 16
+Total execution time for current run (millis): 2970
+Total execution time for current run (millis): 3354
+Total execution time for current run (millis): 3235
+Total execution time for current run (millis): 2933
+Total execution time for current run (millis): 3012
+
+thread : 17
+Total execution time for current run (millis): 3012
+Total execution time for current run (millis): 3158
+Total execution time for current run (millis): 3328
+Total execution time for current run (millis): 3070
+Total execution time for current run (millis): 2822
+
+thread : 18
+Total execution time for current run (millis): 2874
+Total execution time for current run (millis): 2855
+Total execution time for current run (millis): 2858
+Total execution time for current run (millis): 2993
+Total execution time for current run (millis): 2854
+
+thread : 19
+Total execution time for current run (millis): 2843
+Total execution time for current run (millis): 2820
+Total execution time for current run (millis): 2891
+Total execution time for current run (millis): 2897
+Total execution time for current run (millis): 2807
+
+thread : 20
+Total execution time for current run (millis): 2697
+Total execution time for current run (millis): 2714
+Total execution time for current run (millis): 2684
+Total execution time for current run (millis): 2726
+Total execution time for current run (millis): 2701
+

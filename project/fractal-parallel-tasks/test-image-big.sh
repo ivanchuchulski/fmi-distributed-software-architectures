@@ -11,7 +11,7 @@ function testImageBig() {
 
     for thread in $(seq "${maxThreads}")
     do
-        echo "thread : ${thread}"
+        echo "thread : ${thread}" >> "${output}"
 
         for run in $(seq 5)
         do 
@@ -22,3 +22,6 @@ function testImageBig() {
         echo "" >> "${output}"
     done
 }
+
+
+testImageBig
