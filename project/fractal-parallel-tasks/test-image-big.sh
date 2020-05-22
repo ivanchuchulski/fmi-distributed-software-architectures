@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function testImageBig() {
     local output="output-big-image-five-runs.txt"
 	local maxThreads=20
@@ -22,6 +24,5 @@ function testImageBig() {
         echo "" >> "${output}"
     done
 }
-
 
 testImageBig
