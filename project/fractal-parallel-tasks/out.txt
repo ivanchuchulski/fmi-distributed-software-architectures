@@ -1,0 +1,693 @@
+Fri May 22 14:24:38 EEST 2020
+20
+1280x960
+Thread-1 started.
+Thread-1 stopped
+Thread-1 execution time was (millis): 120662
+Total execution time for current run (millis): 121966
+Threads used in current run: 1
+
+Thread-1 started.
+Thread-2 started.
+Thread-2 stopped
+Thread-2 execution time was (millis): 60656
+Thread-1 stopped
+Thread-1 execution time was (millis): 60732
+Total execution time for current run (millis): 62033
+Threads used in current run: 2
+
+Thread-1 started.
+Thread-3 started.
+Thread-2 started.
+Thread-2 stopped
+Thread-2 execution time was (millis): 53185
+Thread-3 stopped
+Thread-3 execution time was (millis): 53225
+Thread-1 stopped
+Thread-1 execution time was (millis): 53288
+Total execution time for current run (millis): 54623
+Threads used in current run: 3
+
+Thread-1 started.
+Thread-4 started.
+Thread-3 started.
+Thread-2 started.
+Thread-3 stopped
+Thread-3 execution time was (millis): 30771
+Thread-1 stopped
+Thread-1 execution time was (millis): 30800
+Thread-4 stopped
+Thread-4 execution time was (millis): 30841
+Thread-2 stopped
+Thread-2 execution time was (millis): 30846
+Total execution time for current run (millis): 31950
+Threads used in current run: 4
+
+Thread-2 started.
+Thread-5 started.
+Thread-3 started.
+Thread-4 started.
+Thread-1 started.
+Thread-4 stopped
+Thread-4 execution time was (millis): 24979
+Thread-1 stopped
+Thread-1 execution time was (millis): 24984
+Thread-5 stopped
+Thread-5 execution time was (millis): 25041
+Thread-3 stopped
+Thread-3 execution time was (millis): 25042
+Thread-2 stopped
+Thread-2 execution time was (millis): 25072
+Total execution time for current run (millis): 26345
+Threads used in current run: 5
+
+Thread-1 started.
+Thread-6 started.
+Thread-5 started.
+Thread-3 started.
+Thread-4 started.
+Thread-2 started.
+Thread-5 stopped
+Thread-5 execution time was (millis): 20986
+Thread-1 stopped
+Thread-1 execution time was (millis): 21052
+Thread-3 stopped
+Thread-3 execution time was (millis): 21056
+Thread-2 stopped
+Thread-2 execution time was (millis): 21067
+Thread-6 stopped
+Thread-6 execution time was (millis): 21083
+Thread-4 stopped
+Thread-4 execution time was (millis): 21087
+Total execution time for current run (millis): 22227
+Threads used in current run: 6
+
+Thread-1 started.
+Thread-6 started.
+Thread-7 started.
+Thread-5 started.
+Thread-3 started.
+Thread-4 started.
+Thread-2 started.
+Thread-7 stopped
+Thread-7 execution time was (millis): 18412
+Thread-1 stopped
+Thread-1 execution time was (millis): 18431
+Thread-2 stopped
+Thread-2 execution time was (millis): 18432
+Thread-3 stopped
+Thread-3 execution time was (millis): 18475
+Thread-4 stopped
+Thread-4 execution time was (millis): 18512
+Thread-6 stopped
+Thread-5 stopped
+Thread-6 execution time was (millis): 18517
+Thread-5 execution time was (millis): 18518
+Total execution time for current run (millis): 19630
+Threads used in current run: 7
+
+Thread-1 started.
+Thread-8 started.
+Thread-7 started.
+Thread-6 started.
+Thread-4 started.
+Thread-5 started.
+Thread-3 started.
+Thread-2 started.
+Thread-6 stopped
+Thread-6 execution time was (millis): 16406
+Thread-3 stopped
+Thread-3 execution time was (millis): 16432
+Thread-4 stopped
+Thread-4 execution time was (millis): 16433
+Thread-5 stopped
+Thread-5 execution time was (millis): 16442
+Thread-8 stopped
+Thread-8 execution time was (millis): 16442
+Thread-7 stopped
+Thread-7 execution time was (millis): 16482
+Thread-1 stopped
+Thread-1 execution time was (millis): 16501
+Thread-2 stopped
+Thread-2 execution time was (millis): 16504
+Total execution time for current run (millis): 17636
+Threads used in current run: 8
+
+Thread-1 started.
+Thread-8 started.
+Thread-6 started.
+Thread-7 started.
+Thread-4 started.
+Thread-5 started.
+Thread-9 started.
+Thread-3 started.
+Thread-2 started.
+Thread-8 stopped
+Thread-8 execution time was (millis): 14690
+Thread-7 stopped
+Thread-7 execution time was (millis): 14739
+Thread-2 stopped
+Thread-2 execution time was (millis): 14743
+Thread-6 stopped
+Thread-6 execution time was (millis): 14744
+Thread-9 stopped
+Thread-9 execution time was (millis): 14747
+Thread-4 stopped
+Thread-4 execution time was (millis): 14750
+Thread-1 stopped
+Thread-1 execution time was (millis): 14774
+Thread-3 stopped
+Thread-3 execution time was (millis): 14775
+Thread-5 stopped
+Thread-5 execution time was (millis): 14789
+Total execution time for current run (millis): 16357
+Threads used in current run: 9
+
+Thread-3 started.
+Thread-9 started.
+Thread-7 started.
+Thread-6 started.
+Thread-10 started.
+Thread-8 started.
+Thread-5 started.
+Thread-4 started.
+Thread-2 started.
+Thread-1 started.
+Thread-9 stopped
+Thread-9 execution time was (millis): 13413
+Thread-7 stopped
+Thread-7 execution time was (millis): 13437
+Thread-5 stopped
+Thread-5 execution time was (millis): 13441
+Thread-8 stopped
+Thread-8 execution time was (millis): 13442
+Thread-4 stopped
+Thread-4 execution time was (millis): 13459
+Thread-3 stopped
+Thread-3 execution time was (millis): 13488
+Thread-6 stopped
+Thread-6 execution time was (millis): 13487
+Thread-2 stopped
+Thread-2 execution time was (millis): 13496
+Thread-10 stopped
+Thread-10 execution time was (millis): 13501
+Thread-1 stopped
+Thread-1 execution time was (millis): 13518
+Total execution time for current run (millis): 14628
+Threads used in current run: 10
+
+Thread-3 started.
+Thread-10 started.
+Thread-9 started.
+Thread-11 started.
+Thread-7 started.
+Thread-6 started.
+Thread-8 started.
+Thread-5 started.
+Thread-1 started.
+Thread-4 started.
+Thread-2 started.
+Thread-4 stopped
+Thread-4 execution time was (millis): 12864
+Thread-3 stopped
+Thread-3 execution time was (millis): 12884
+Thread-6 stopped
+Thread-6 execution time was (millis): 12883
+Thread-9 stopped
+Thread-9 execution time was (millis): 12887
+Thread-8 stopped
+Thread-8 execution time was (millis): 12895
+Thread-11 stopped
+Thread-11 execution time was (millis): 12902
+Thread-10 stopped
+Thread-10 execution time was (millis): 12915
+Thread-1 stopped
+Thread-1 execution time was (millis): 12924
+Thread-5 stopped
+Thread-5 execution time was (millis): 12937
+Thread-2 stopped
+Thread-2 execution time was (millis): 12941
+Thread-7 stopped
+Thread-7 execution time was (millis): 12962
+Total execution time for current run (millis): 14118
+Threads used in current run: 11
+
+Thread-1 started.
+Thread-11 started.
+Thread-12 started.
+Thread-10 started.
+Thread-9 started.
+Thread-8 started.
+Thread-7 started.
+Thread-6 started.
+Thread-5 started.
+Thread-4 started.
+Thread-3 started.
+Thread-2 started.
+Thread-7 stopped
+Thread-7 execution time was (millis): 12117
+Thread-4 stopped
+Thread-4 execution time was (millis): 12135
+Thread-5 stopped
+Thread-5 execution time was (millis): 12143
+Thread-12 stopped
+Thread-12 execution time was (millis): 12149
+Thread-2 stopped
+Thread-2 execution time was (millis): 12203
+Thread-11 stopped
+Thread-11 execution time was (millis): 12205
+Thread-9 stopped
+Thread-9 execution time was (millis): 12214
+Thread-3 stopped
+Thread-3 execution time was (millis): 12221
+Thread-8 stopped
+Thread-10 stopped
+Thread-8 execution time was (millis): 12223
+Thread-10 execution time was (millis): 12222
+Thread-1 stopped
+Thread-1 execution time was (millis): 12265
+Thread-6 stopped
+Thread-6 execution time was (millis): 12273
+Total execution time for current run (millis): 13442
+Threads used in current run: 12
+
+Thread-1 started.
+Thread-13 started.
+Thread-12 started.
+Thread-11 started.
+Thread-9 started.
+Thread-10 started.
+Thread-8 started.
+Thread-7 started.
+Thread-6 started.
+Thread-4 started.
+Thread-3 started.
+Thread-5 started.
+Thread-2 started.
+Thread-13 stopped
+Thread-13 execution time was (millis): 12216
+Thread-3 stopped
+Thread-3 execution time was (millis): 12231
+Thread-5 stopped
+Thread-6 stopped
+Thread-5 execution time was (millis): 12255
+Thread-6 execution time was (millis): 12255
+Thread-11 stopped
+Thread-11 execution time was (millis): 12260
+Thread-7 stopped
+Thread-7 execution time was (millis): 12271
+Thread-8 stopped
+Thread-8 execution time was (millis): 12278
+Thread-12 stopped
+Thread-12 execution time was (millis): 12278
+Thread-4 stopped
+Thread-4 execution time was (millis): 12292
+Thread-2 stopped
+Thread-2 execution time was (millis): 12313
+Thread-1 stopped
+Thread-1 execution time was (millis): 12317
+Thread-10 stopped
+Thread-10 execution time was (millis): 12318
+Thread-9 stopped
+Thread-9 execution time was (millis): 12341
+Total execution time for current run (millis): 13490
+Threads used in current run: 13
+
+Thread-1 started.
+Thread-14 started.
+Thread-13 started.
+Thread-12 started.
+Thread-11 started.
+Thread-8 started.
+Thread-10 started.
+Thread-9 started.
+Thread-4 started.
+Thread-7 started.
+Thread-6 started.
+Thread-5 started.
+Thread-3 started.
+Thread-2 started.
+Thread-10 stopped
+Thread-10 execution time was (millis): 11951
+Thread-1 stopped
+Thread-1 execution time was (millis): 11958
+Thread-2 stopped
+Thread-2 execution time was (millis): 11958
+Thread-5 stopped
+Thread-5 execution time was (millis): 11963
+Thread-3 stopped
+Thread-3 execution time was (millis): 11972
+Thread-11 stopped
+Thread-11 execution time was (millis): 11975
+Thread-9 stopped
+Thread-9 execution time was (millis): 11984
+Thread-14 stopped
+Thread-14 execution time was (millis): 11992
+Thread-12 stopped
+Thread-12 execution time was (millis): 12044
+Thread-8 stopped
+Thread-8 execution time was (millis): 12044
+Thread-4 stopped
+Thread-4 execution time was (millis): 12055
+Thread-7 stopped
+Thread-7 execution time was (millis): 12066
+Thread-6 stopped
+Thread-6 execution time was (millis): 12072
+Thread-13 stopped
+Thread-13 execution time was (millis): 12080
+Total execution time for current run (millis): 13242
+Threads used in current run: 14
+
+Thread-1 started.
+Thread-15 started.
+Thread-14 started.
+Thread-13 started.
+Thread-12 started.
+Thread-11 started.
+Thread-10 started.
+Thread-9 started.
+Thread-8 started.
+Thread-7 started.
+Thread-5 started.
+Thread-6 started.
+Thread-3 started.
+Thread-4 started.
+Thread-2 started.
+Thread-6 stopped
+Thread-6 execution time was (millis): 12152
+Thread-7 stopped
+Thread-7 execution time was (millis): 12157
+Thread-3 stopped
+Thread-3 execution time was (millis): 12160
+Thread-15 stopped
+Thread-15 execution time was (millis): 12159
+Thread-12 stopped
+Thread-12 execution time was (millis): 12176
+Thread-2 stopped
+Thread-2 execution time was (millis): 12190
+Thread-1 stopped
+Thread-1 execution time was (millis): 12207
+Thread-13 stopped
+Thread-13 execution time was (millis): 12202
+Thread-5 stopped
+Thread-5 execution time was (millis): 12227
+Thread-11 stopped
+Thread-11 execution time was (millis): 12234
+Thread-8 stopped
+Thread-8 execution time was (millis): 12242
+Thread-9 stopped
+Thread-9 execution time was (millis): 12242
+Thread-4 stopped
+Thread-4 execution time was (millis): 12247
+Thread-14 stopped
+Thread-14 execution time was (millis): 12265
+Thread-10 stopped
+Thread-10 execution time was (millis): 12283
+Total execution time for current run (millis): 13480
+Threads used in current run: 15
+
+Thread-2 started.
+Thread-15 started.
+Thread-16 started.
+Thread-14 started.
+Thread-13 started.
+Thread-11 started.
+Thread-12 started.
+Thread-10 started.
+Thread-9 started.
+Thread-8 started.
+Thread-7 started.
+Thread-6 started.
+Thread-5 started.
+Thread-4 started.
+Thread-3 started.
+Thread-1 started.
+Thread-8 stopped
+Thread-8 execution time was (millis): 12125
+Thread-7 stopped
+Thread-7 execution time was (millis): 12137
+Thread-14 stopped
+Thread-14 execution time was (millis): 12148
+Thread-6 stopped
+Thread-6 execution time was (millis): 12156
+Thread-15 stopped
+Thread-15 execution time was (millis): 12167
+Thread-16 stopped
+Thread-16 execution time was (millis): 12189
+Thread-2 stopped
+Thread-2 execution time was (millis): 12196
+Thread-11 stopped
+Thread-11 execution time was (millis): 12199
+Thread-4 stopped
+Thread-4 execution time was (millis): 12220
+Thread-10 stopped
+Thread-10 execution time was (millis): 12233
+Thread-13 stopped
+Thread-13 execution time was (millis): 12234
+Thread-9 stopped
+Thread-9 execution time was (millis): 12248
+Thread-1 stopped
+Thread-1 execution time was (millis): 12254
+Thread-3 stopped
+Thread-3 execution time was (millis): 12254
+Thread-12 stopped
+Thread-12 execution time was (millis): 12251
+Thread-5 stopped
+Thread-5 execution time was (millis): 12270
+Total execution time for current run (millis): 13488
+Threads used in current run: 16
+
+Thread-2 started.
+Thread-16 started.
+Thread-17 started.
+Thread-15 started.
+Thread-12 started.
+Thread-14 started.
+Thread-13 started.
+Thread-9 started.
+Thread-11 started.
+Thread-8 started.
+Thread-10 started.
+Thread-7 started.
+Thread-6 started.
+Thread-5 started.
+Thread-4 started.
+Thread-1 started.
+Thread-3 started.
+Thread-15 stopped
+Thread-15 execution time was (millis): 11966
+Thread-16 stopped
+Thread-16 execution time was (millis): 12010
+Thread-17 stopped
+Thread-17 execution time was (millis): 12021
+Thread-3 stopped
+Thread-3 execution time was (millis): 12028
+Thread-4 stopped
+Thread-4 execution time was (millis): 12030
+Thread-8 stopped
+Thread-8 execution time was (millis): 12036
+Thread-1 stopped
+Thread-1 execution time was (millis): 12042
+Thread-13 stopped
+Thread-13 execution time was (millis): 12056
+Thread-9 stopped
+Thread-9 execution time was (millis): 12072
+Thread-5 stopped
+Thread-5 execution time was (millis): 12079
+Thread-10 stopped
+Thread-10 execution time was (millis): 12096
+Thread-7 stopped
+Thread-7 execution time was (millis): 12098
+Thread-2 stopped
+Thread-2 execution time was (millis): 12103
+Thread-11 stopped
+Thread-11 execution time was (millis): 12114
+Thread-14 stopped
+Thread-14 execution time was (millis): 12115
+Thread-12 stopped
+Thread-12 execution time was (millis): 12119
+Thread-6 stopped
+Thread-6 execution time was (millis): 12125
+Total execution time for current run (millis): 13646
+Threads used in current run: 17
+
+Thread-2 started.
+Thread-18 started.
+Thread-17 started.
+Thread-15 started.
+Thread-16 started.
+Thread-13 started.
+Thread-14 started.
+Thread-12 started.
+Thread-11 started.
+Thread-9 started.
+Thread-10 started.
+Thread-6 started.
+Thread-8 started.
+Thread-7 started.
+Thread-5 started.
+Thread-4 started.
+Thread-1 started.
+Thread-3 started.
+Thread-15 stopped
+Thread-15 execution time was (millis): 11688
+Thread-7 stopped
+Thread-7 execution time was (millis): 11694
+Thread-1 stopped
+Thread-1 execution time was (millis): 11701
+Thread-13 stopped
+Thread-13 execution time was (millis): 11704
+Thread-9 stopped
+Thread-16 stopped
+Thread-9 execution time was (millis): 11708
+Thread-16 execution time was (millis): 11708
+Thread-14 stopped
+Thread-14 execution time was (millis): 11716
+Thread-11 stopped
+Thread-11 execution time was (millis): 11732
+Thread-8 stopped
+Thread-8 execution time was (millis): 11737
+Thread-18 stopped
+Thread-18 execution time was (millis): 11740
+Thread-10 stopped
+Thread-10 execution time was (millis): 11781
+Thread-4 stopped
+Thread-4 execution time was (millis): 11786
+Thread-2 stopped
+Thread-2 execution time was (millis): 11796
+Thread-12 stopped
+Thread-12 execution time was (millis): 11812
+Thread-17 stopped
+Thread-17 execution time was (millis): 11815
+Thread-5 stopped
+Thread-5 execution time was (millis): 11823
+Thread-3 stopped
+Thread-3 execution time was (millis): 11830
+Thread-6 stopped
+Thread-6 execution time was (millis): 11859
+Total execution time for current run (millis): 13289
+Threads used in current run: 18
+
+Thread-1 started.
+Thread-18 started.
+Thread-19 started.
+Thread-17 started.
+Thread-16 started.
+Thread-15 started.
+Thread-14 started.
+Thread-11 started.
+Thread-13 started.
+Thread-12 started.
+Thread-10 started.
+Thread-9 started.
+Thread-8 started.
+Thread-6 started.
+Thread-7 started.
+Thread-4 started.
+Thread-3 started.
+Thread-5 started.
+Thread-2 started.
+Thread-15 stopped
+Thread-2 stopped
+Thread-2 execution time was (millis): 8817
+Thread-15 execution time was (millis): 8810
+Thread-8 stopped
+Thread-8 execution time was (millis): 8819
+Thread-6 stopped
+Thread-6 execution time was (millis): 8832
+Thread-1 stopped
+Thread-1 execution time was (millis): 8844
+Thread-18 stopped
+Thread-18 execution time was (millis): 8839
+Thread-14 stopped
+Thread-14 execution time was (millis): 8847
+Thread-10 stopped
+Thread-11 stopped
+Thread-10 execution time was (millis): 8862
+Thread-11 execution time was (millis): 8862
+Thread-4 stopped
+Thread-4 execution time was (millis): 8865
+Thread-5 stopped
+Thread-5 execution time was (millis): 8876
+Thread-19 stopped
+Thread-19 execution time was (millis): 8871
+Thread-13 stopped
+Thread-13 execution time was (millis): 8890
+Thread-17 stopped
+Thread-17 execution time was (millis): 8889
+Thread-9 stopped
+Thread-9 execution time was (millis): 8899
+Thread-7 stopped
+Thread-7 execution time was (millis): 8916
+Thread-3 stopped
+Thread-3 execution time was (millis): 8924
+Thread-16 stopped
+Thread-16 execution time was (millis): 8921
+Thread-12 stopped
+Thread-12 execution time was (millis): 8924
+Total execution time for current run (millis): 10096
+Threads used in current run: 19
+
+Thread-1 started.
+Thread-18 started.
+Thread-17 started.
+Thread-20 started.
+Thread-19 started.
+Thread-16 started.
+Thread-15 started.
+Thread-14 started.
+Thread-13 started.
+Thread-12 started.
+Thread-10 started.
+Thread-11 started.
+Thread-9 started.
+Thread-8 started.
+Thread-7 started.
+Thread-6 started.
+Thread-5 started.
+Thread-2 started.
+Thread-4 started.
+Thread-3 started.
+Thread-9 stopped
+Thread-9 execution time was (millis): 8567
+Thread-18 stopped
+Thread-3 stopped
+Thread-18 execution time was (millis): 8568
+Thread-3 execution time was (millis): 8575
+Thread-7 stopped
+Thread-7 execution time was (millis): 8583
+Thread-5 stopped
+Thread-5 execution time was (millis): 8589
+Thread-16 stopped
+Thread-16 execution time was (millis): 8588
+Thread-11 stopped
+Thread-11 execution time was (millis): 8598
+Thread-10 stopped
+Thread-10 execution time was (millis): 8600
+Thread-6 stopped
+Thread-6 execution time was (millis): 8627
+Thread-20 stopped
+Thread-20 execution time was (millis): 8626
+Thread-2 stopped
+Thread-2 execution time was (millis): 8641
+Thread-14 stopped
+Thread-15 stopped
+Thread-14 execution time was (millis): 8641
+Thread-15 execution time was (millis): 8640
+Thread-17 stopped
+Thread-17 execution time was (millis): 8640
+Thread-13 stopped
+Thread-13 execution time was (millis): 8646
+Thread-8 stopped
+Thread-8 execution time was (millis): 8656
+Thread-4 stopped
+Thread-4 execution time was (millis): 8663
+Thread-1 stopped
+Thread-1 execution time was (millis): 8673
+Thread-12 stopped
+Thread-12 execution time was (millis): 8670
+Thread-19 stopped
+Thread-19 execution time was (millis): 8695
+Total execution time for current run (millis): 9833
+Threads used in current run: 20
+

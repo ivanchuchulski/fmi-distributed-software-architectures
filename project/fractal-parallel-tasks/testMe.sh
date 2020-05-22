@@ -12,26 +12,26 @@ function testWithMultipleRuns() {
 
 
 function testWithSingleRun() {
-    maxThreads=20
+    output="output.txt"
+	maxThreads=20
     imageSize="1280x960"
+	    
+	truncate -s 0 "${output}"
     
-    date >> out.txt
-    echo "${maxThreads}" >> out.txt
-    echo "${imageSize}" >> out.txt
+	date >> "${output}"
+    echo "maxThreads : ${maxThreads}" >> "${output}"
+    echo "imageSize : ${imageSize}" >> "${output}"
 
     for thread in $(seq "${maxThreads}")
     do
         options="-t ${thread} -s ${imageSize}"
-        
-        bash ./runMe.sh "${options}" >> out.txt
+        bash ./runMe.sh "${options}" >> "${output}"
         wait $!
 
-        echo "" >> out.txt
+        echo "" >> "${output}"
     done
 }
 
-# clear the file first
-truncate -s 0 out.txt
 
 testWithSingleRun
 
