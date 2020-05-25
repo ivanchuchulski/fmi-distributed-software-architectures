@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function testImageHuge() {
-    local output="output-big-image-five-runs.txt"
+    local output="output-huge-image-five-runs.txt"
 	local maxThreads=20
     local imageSize="1920x1440"
 	    
