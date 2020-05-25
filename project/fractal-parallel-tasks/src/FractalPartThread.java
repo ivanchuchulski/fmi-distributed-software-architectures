@@ -87,7 +87,7 @@ public class FractalPartThread extends Thread {
 
 		// maybe tweak maxIterations, 1000 is to much, maybe 500 or little bit less
 		int iterations = 0;
-		final int maxIterations = 500;
+		final int maxIterations = Main.maxPointIterations;
 
 		for (int i = 0; i < maxIterations; i++) {
 			zIteration = calculateIterationTerm(zPrevious, complexPoint);

@@ -26,6 +26,8 @@ public class Main {
 
 	public static boolean quietOutput = false;
 
+	public static int maxPointIterations = 500;
+
 	public static void main(String[] args) {
 		long startTimestamp = Calendar.getInstance().getTimeInMillis();
 
@@ -100,6 +102,9 @@ public class Main {
 		options.addOption("q", false, "quiet running of program, without additional logs");
 		options.addOption("h", false, "print information about the program");
 
+		// for testing
+		options.addOption("i", true, "number of iterations");
+
 		CommandLineParser parser = new DefaultParser();
 		CommandLine commandLine = parser.parse(options, args);
 
@@ -132,6 +137,10 @@ public class Main {
 
 		if (commandLine.hasOption("q")) {
 			quietOutput = true;
+		}
+
+		if (commandLine.hasOption("i")) {
+			maxPointIterations = Integer.parseInt(commandLine.getOptionValue("i"));
 		}
 	}
 
