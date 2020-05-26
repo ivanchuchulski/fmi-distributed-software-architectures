@@ -33,8 +33,8 @@ public class FractalPartThread extends Thread {
                 int yPixel = rowAvailable;
 
                 for (int xPixel = 0; xPixel < Main.width; xPixel++) {
-                    double realValue = mapPixelWidthToRealAxis(xPixel, Main.width, Main.minReal, Main.maxReal);
-                    double imaginaryValue = mapPixelHeightToImaginaryAxis(yPixel, Main.height, Main.minImaginary, Main.maxImaginary);
+                    double realValue = mapPixelWidthToRealAxis(xPixel);
+                    double imaginaryValue = mapPixelHeightToImaginaryAxis(yPixel);
 
                     int numberOfSteps = calculateNumberOfSteps(new Complex(realValue, imaginaryValue));
 
@@ -131,16 +131,16 @@ public class FractalPartThread extends Thread {
 		System.out.printf("(%.9f, %.9f) to (%3d, %3d) => %d\n", realValue, imaginaryValue, xPixel, yPixel, r);
 	}
 
-	private static double mapPixelWidthToRealAxis(int x, int width, double minReal,double maxReal) {
-		double range = maxReal - minReal;
+	private static double mapPixelWidthToRealAxis(int xPixel) {
+		double range = Main.maxReal - Main.minReal;
 
-		return x * (range / width) + minReal;
+		return xPixel * (range / Main.width) + Main.minReal;
 	}
 
-	private static double mapPixelHeightToImaginaryAxis(int y, int height, double minImaginary, double maxImaginary) {
-		double range = maxImaginary - minImaginary;
+	private static double mapPixelHeightToImaginaryAxis(int yPixel) {
+		double range = Main.maxImaginary - Main.minImaginary;
 
-		return y * (range / height) + minImaginary;
+		return yPixel * (range / Main.height) + Main.minImaginary;
 	}
 
 	private static int blackAndWhiteOutput(BufferedImage bufferedImage, int xPixel, int yPixel, int iterations) {
