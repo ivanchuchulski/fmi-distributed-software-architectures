@@ -2,23 +2,32 @@
 
 function testIterations() {
     local output="iterations-350-five-runs.txt"
-	local maxThreads=20
+	local maxThreads=24
     local iterations=550
-    local imageSize="800x600"
+    local imageSize="1280x960"
 
 	truncate -s 0 "${output}"
     
 	date >> "${output}"
     echo "maxThreads : ${maxThreads}" >> "${output}"
     echo "iterations : ${iterations}" >> "${output}"
+    echo "imageSize : ${imageSize}" >> "${output}"
 
-    for (( thread=1; thread<="${maxThreads}"; thread++ ))
+    echo "thread : 1" >> "${output}"
+    for run in $(seq 5)
+    do 
+        local options="-q -t 1 -s ${imageSize} -i ${iterations}"
+        bash ./runMe.sh "${options}" >> "${output}"
+        wait $!
+    done
+    echo "" >> "${output}"
+
+    for (( thread=2; thread<="${maxThreads}"; thread+=2 ))
     do
         echo "thread : ${thread}" >> "${output}"
-
         for run in $(seq 5)
         do 
-            local options="-q -t ${thread} -i ${iterations} -s ${imageSize}"
+            local options="-q -t ${thread} -s ${imageSize} -i ${iterations}"
             bash ./runMe.sh "${options}" >> "${output}"
             wait $!
         done
