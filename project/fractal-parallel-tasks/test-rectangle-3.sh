@@ -9,7 +9,7 @@ function testRectanle() {
     
 	date >> "${output}"
     echo "maxThreads : ${maxThreads}" >> "${output}"
-    echo "rectangle 3 : ${imageSize}" >> "${output}"
+    echo "rectangle 3 : ${rectangle}" >> "${output}"
 
     for (( thread=1; thread<="${maxThreads}"; thread++ ))
     do
