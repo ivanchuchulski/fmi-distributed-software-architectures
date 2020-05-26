@@ -1,15 +1,15 @@
 #!/bin/bash
 
-function testRectanle() {
-    local output="rectangle-1-five-runs.txt"
+function testImage() {
+    local output="output-image-4-five-runs.txt"
 	local maxThreads=24
-    local rectangle="-2.0:0.0:-2.0:0.0"
+    local imageSize="2560x1920"
 	    
 	truncate -s 0 "${output}"
     
 	date >> "${output}"
     echo "maxThreads : ${maxThreads}" >> "${output}"
-    echo "rectangle 1 : ${rectangle}" >> "${output}"
+    echo "imageSize : ${imageSize}" >> "${output}"
 
     for (( thread=1; thread<="${maxThreads}"; thread++ ))
     do
@@ -17,7 +17,7 @@ function testRectanle() {
 
         for run in $(seq 5)
         do 
-            local options="-q -t ${thread} -r ${rectangle}"
+            local options="-q -t ${thread} -s ${imageSize}"
             bash ./runMe.sh "${options}" >> "${output}"
             wait $!
         done
@@ -25,4 +25,4 @@ function testRectanle() {
     done
 }
 
-testRectanle
+testImage

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-function testImageHuge() {
-    local output="output-huge-image-five-runs.txt"
-	local maxThreads=20
-    local imageSize="1920x1440"
+function testImage() {
+    local output="output-image-1-five-runs.txt"
+	local maxThreads=22
+    local imageSize="640x480"
 	    
 	truncate -s 0 "${output}"
     
@@ -11,7 +11,7 @@ function testImageHuge() {
     echo "maxThreads : ${maxThreads}" >> "${output}"
     echo "imageSize : ${imageSize}" >> "${output}"
 
-    for thread in $(seq "${maxThreads}")
+    for (( thread=1; thread<="${maxThreads}"; thread++ ))
     do
         echo "thread : ${thread}" >> "${output}"
 
@@ -25,4 +25,4 @@ function testImageHuge() {
     done
 }
 
-testImageHuge
+testImage
