@@ -5,8 +5,6 @@ function testImage() {
 	local maxThreads=24
     local imageSize="640x480"
 	    
-	truncate -s 0 "${output}"
-    
 	date >> "${output}"
     echo "maxThreads : ${maxThreads}" >> "${output}"
     echo "imageSize : ${imageSize}" >> "${output}"

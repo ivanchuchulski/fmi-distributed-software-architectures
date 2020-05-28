@@ -5,8 +5,6 @@ function testIterations() {
 	local maxThreads=24
     local iterations=550
     local imageSize="1280x960"
-
-	truncate -s 0 "${output}"
     
 	date >> "${output}"
     echo "maxThreads : ${maxThreads}" >> "${output}"

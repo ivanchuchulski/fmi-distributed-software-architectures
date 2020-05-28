@@ -4,9 +4,7 @@ function testImage() {
     local output="output-image-2-five-runs.txt"
 	local maxThreads=24
     local imageSize="1280x960"
-	    
-	truncate -s 0 "${output}"
-    
+	        
 	date >> "${output}"
     echo "maxThreads : ${maxThreads}" >> "${output}"
     echo "imageSize : ${imageSize}" >> "${output}"
