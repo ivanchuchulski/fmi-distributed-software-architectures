@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function testIterations() {
-    local output="iterations-350-five-runs.txt"
+    local output="iterations-850-five-runs.txt"
 	local maxThreads=24
     local iterations=850
     local imageSize="1280x960"
