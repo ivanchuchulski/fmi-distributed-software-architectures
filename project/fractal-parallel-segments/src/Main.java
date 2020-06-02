@@ -58,15 +58,27 @@ public class Main {
 
 		for (int heightCounter = 0; heightCounter < height; heightCounter += heightStep) {
 			for (int widthCounter = 0; widthCounter < width; widthCounter += widthStep) {
-				SegmentTask segmentTask = new SegmentTask(segmentIDCounter, heightCounter, widthCounter, heightCounter + heightStep, widthCounter + widthStep);
+				int heightEnd = heightCounter + heightStep;
+				int widthEnd = widthCounter +  widthStep;
+
+				if (heightEnd > height) {
+					heightEnd = height;
+				}
+
+				if (widthEnd > width) {
+					widthEnd = width;
+				}
+
+				SegmentTask segmentTask = new SegmentTask(segmentIDCounter, heightCounter, widthCounter, heightEnd, widthEnd);
 				tasks.add(segmentTask);
 				segmentIDCounter++;
 			}
 		}
 
-		for (SegmentTask task : tasks) {
-			System.out.printf("%d %d %d %d%n", task.heightStart, task.heightEnd, task.widthStart, task.widthEnd);
-		}
+//		for (SegmentTask task : tasks) {
+//			System.out.printf("%d %d %d %d%n", task.heightStart, task.heightEnd, task.widthStart, task.widthEnd);
+//		}
+//		System.exit(2);
 
 		ArrayList<FractalPartThread> fractalThreads = new ArrayList<>(threadCount);
 		for (int threadIndex = 0; threadIndex < threadCount; threadIndex++) {
