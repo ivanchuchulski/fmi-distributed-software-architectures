@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Calendar;
 import java.util.Vector;
@@ -23,10 +24,11 @@ public class FractalPartThread extends Thread {
         }
 
         while (true) {
-            int rowAvailable = findFirstAvailableTask();
+//            int rowAvailable = findFirstAvailableTask();
+			int rowAvailable = getTask();
 
             if (rowAvailable != -1) {
-                markTaskAsTaken(rowAvailable);
+//                markTaskAsTaken(rowAvailable);
 
 //                System.out.printf("thread %d working on row %d%n", index, rowAvailable);
 
@@ -56,6 +58,16 @@ public class FractalPartThread extends Thread {
             }
         }
     }
+
+    private synchronized int getTask() {
+		int index = tasks.indexOf(false);
+
+		if (index != -1) {
+			tasks.setElementAt(true, index);
+		}
+
+		return index;
+	}
 
 	/**
 	 * finds the first available row at the image to be processed

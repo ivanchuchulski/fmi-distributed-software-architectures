@@ -74,12 +74,12 @@ public class Main {
 		graphics2D.setColor(Color.GRAY);
 		graphics2D.drawRect(0, 0, width - 2, height - 2);
 
-		try {
-			ImageIO.write(bufferedImage, "PNG", new File(outputFileName));
-		}
-		catch (IOException ioException) {
-			ioException.printStackTrace();
-		}
+//		try {
+//			ImageIO.write(bufferedImage, "PNG", new File(outputFileName));
+//		}
+//		catch (IOException ioException) {
+//			ioException.printStackTrace();
+//		}
 
 //		or maybe stop timer before image write?
 		long finishTimestamp = Calendar.getInstance().getTimeInMillis();
