@@ -1,0 +1,5 @@
+Thu Jun  4 15:08:49 EEST 2020
+maxThreads : 24
+iterations : 550
+imageSize : 1920x1440
+thread : 1
