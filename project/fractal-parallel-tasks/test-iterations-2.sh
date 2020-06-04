@@ -4,8 +4,9 @@ function testIterations() {
     local output="iterations-550-five-runs.txt"
 	local maxThreads=24
     local iterations=550
-    local imageSize="1280x960"
+    local imageSize="1920x1440"
     
+    echo "----------------------------------------"
 	date >> "${output}"
     echo "maxThreads : ${maxThreads}" >> "${output}"
     echo "iterations : ${iterations}" >> "${output}"
