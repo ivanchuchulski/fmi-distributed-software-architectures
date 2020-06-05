@@ -22,7 +22,7 @@ public class Main {
 	public static double minImaginary = -2.0;
 	public static double maxImaginary = 2.0;
 
-	public static String outputFileName = "image.png";
+	public static String outputFileName = "zad17.png";
 
 	public static boolean quietOutput = false;
 
@@ -100,10 +100,8 @@ public class Main {
 		options.addOption("t", true, "number of tasks(threads)");
 		options.addOption("o", true, "name of the output file");
 		options.addOption("q", false, "quiet running of program, without additional logs");
-		options.addOption("h", false, "print information about the program");
-
-		// for testing
 		options.addOption("i", true, "number of iterations");
+		options.addOption("h", false, "print information about the program");
 
 		CommandLineParser parser = new DefaultParser();
 		CommandLine commandLine = parser.parse(options, args);

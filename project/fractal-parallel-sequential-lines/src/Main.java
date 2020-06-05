@@ -21,9 +21,11 @@ public class Main {
 	public static double minImaginary = -2.0;
 	public static double maxImaginary = 2.0;
 
-	public static String outputFileName = "test.png";
+	public static String outputFileName = "zad17.png";
 
 	public static boolean quietOutput = false;
+
+	public static int maxPointIterations = 500;
 
 	public static void main(String[] args) {
 		long startTimestamp = Calendar.getInstance().getTimeInMillis();
@@ -67,12 +69,12 @@ public class Main {
 		graphics2D.setColor(Color.GRAY);
 		graphics2D.drawRect(0, 0, width - 2, height - 2);
 
-		try {
-			ImageIO.write(bufferedImage, "PNG", new File(outputFileName));
-		}
-		catch (IOException ioException) {
-			ioException.printStackTrace();
-		}
+		// try {
+		// 	ImageIO.write(bufferedImage, "PNG", new File(outputFileName));
+		// }
+		// catch (IOException ioException) {
+		// 	ioException.printStackTrace();
+		// }
 
 //		or maybe stop timer before image write?
 		long finishTimestamp = Calendar.getInstance().getTimeInMillis();
@@ -93,6 +95,7 @@ public class Main {
 		options.addOption("t", true, "number of tasks(threads)");
 		options.addOption("o", true, "name of the output file");
 		options.addOption("q", false, "quiet running of program, without additional logs");
+		options.addOption("i", true, "number of iterations");
 		options.addOption("h", false, "print information about the program");
 
 		CommandLineParser parser = new DefaultParser();
@@ -127,6 +130,10 @@ public class Main {
 
 		if (commandLine.hasOption("q")) {
 			quietOutput = true;
+		}
+
+		if (commandLine.hasOption("i")) {
+			maxPointIterations = Integer.parseInt(commandLine.getOptionValue("i"));
 		}
 	}
 

@@ -4,8 +4,9 @@ function testRectangle() {
     local output="rectangle-3-five-runs.txt"
 	local maxThreads=24
     local rectangle="-0.75:0.75:0.0:1.25"
-    local imageSize="1280x960"
+    local imageSize="1920x1440"
     
+    echo "----------------------------------------" >> "${output}"
 	date >> "${output}"
     echo "maxThreads : ${maxThreads}" >> "${output}"
     echo "rectangle 3 : ${rectangle}" >> "${output}"
