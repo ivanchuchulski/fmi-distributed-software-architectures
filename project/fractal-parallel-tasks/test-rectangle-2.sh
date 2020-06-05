@@ -6,7 +6,7 @@ function testRectangle() {
     local rectangle="1.5:2.0:-0.25:0.25"
     local imageSize="1920x1440"
         
-    echo "----------------------------------------"
+    echo "----------------------------------------" >> "${output}"
 	date >> "${output}"
     echo "maxThreads : ${maxThreads}" >> "${output}"
     echo "rectangle 2 : ${rectangle}" >> "${output}"

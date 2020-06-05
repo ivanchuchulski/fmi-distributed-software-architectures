@@ -6,7 +6,7 @@ function testIterations() {
     local iterations=850
     local imageSize="1920x1440"
 
-	echo "----------------------------------------"        
+    echo "----------------------------------------" >> "${output}"
 	date >> "${output}"
     echo "maxThreads : ${maxThreads}" >> "${output}"
     echo "iterations : ${iterations}" >> "${output}"
