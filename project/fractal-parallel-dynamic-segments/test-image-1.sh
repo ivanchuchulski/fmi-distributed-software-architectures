@@ -1,21 +1,19 @@
 #!/bin/bash
 
-function testIterations() {
-    local output="iterations-350-five-runs.txt"
+function testImage() {
+    local output="output-image-1-five-runs.txt"
 	local maxThreads=24
-    local iterations=350
-    local imageSize="1920x1440"
+    local imageSize="640x480"
 
-    echo "----------------------------------------" >> "${output}"
+    echo "----------------------------------------" >> "${output}"    
 	date >> "${output}"
     echo "maxThreads : ${maxThreads}" >> "${output}"
-    echo "iterations : ${iterations}" >> "${output}"
     echo "imageSize : ${imageSize}" >> "${output}"
 
     echo "thread : 1" >> "${output}"
     for run in $(seq 5)
     do 
-        local options="-q -t 1 -s ${imageSize} -i ${iterations}"
+        local options="-q -t 1 -s ${imageSize}"
         bash ./runMe.sh "${options}" >> "${output}"
         wait $!
     done
@@ -26,7 +24,7 @@ function testIterations() {
         echo "thread : ${thread}" >> "${output}"
         for run in $(seq 5)
         do 
-            local options="-q -t ${thread} -s ${imageSize} -i ${iterations}"
+            local options="-q -t ${thread} -s ${imageSize}"
             bash ./runMe.sh "${options}" >> "${output}"
             wait $!
         done
@@ -34,4 +32,4 @@ function testIterations() {
     done
 }
 
-testIterations
+testImage

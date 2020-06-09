@@ -1,10 +1,10 @@
 #!/bin/bash
 
-function testIterations() {
-    local output="iterations-350-five-runs.txt"
-	local maxThreads=24
-    local iterations=350
+function testGranularity() {
+    local output="granularity-test.txt"
+	local maxThreads=32
     local imageSize="1920x1440"
+    local granularity=${1}
 
     echo "----------------------------------------" >> "${output}"
 	date >> "${output}"
@@ -13,9 +13,9 @@ function testIterations() {
     echo "imageSize : ${imageSize}" >> "${output}"
 
     echo "thread : 1" >> "${output}"
-    for run in $(seq 5)
+    for run in $(seq 3)
     do 
-        local options="-q -t 1 -s ${imageSize} -i ${iterations}"
+        local options="-q -t 1 -s ${imageSize} -i ${iterations} -g ${granularity}"
         bash ./runMe.sh "${options}" >> "${output}"
         wait $!
     done
@@ -24,9 +24,9 @@ function testIterations() {
     for (( thread=2; thread<="${maxThreads}"; thread+=2 ))
     do
         echo "thread : ${thread}" >> "${output}"
-        for run in $(seq 5)
+        for run in $(seq 3)
         do 
-            local options="-q -t ${thread} -s ${imageSize} -i ${iterations}"
+            local options="-q -t ${thread} -s ${imageSize} -i ${iterations} -g ${granularity}"
             bash ./runMe.sh "${options}" >> "${output}"
             wait $!
         done
@@ -34,4 +34,8 @@ function testIterations() {
     done
 }
 
-testIterations
+testGranularity 1
+testGranularity 4
+testGranularity 8
+testGranularity 16
+testGranularity 32
