@@ -1,7 +1,7 @@
-import org.apache.commons.math3.complex.Complex;
-
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Calendar;
+import org.apache.commons.math3.complex.Complex;
 
 public class FractalPartThread extends Thread {
 	final private int index;
@@ -28,7 +28,7 @@ public class FractalPartThread extends Thread {
 
 				int numberOfSteps = calculateNumberOfSteps(new Complex(realValue, imaginaryValue));
 
-				int color = getIterationColor(bufferedImage, xPixel, yPixel, numberOfSteps);
+				int color = getIterationColor(numberOfSteps);
 
 				drawPixel(bufferedImage, xPixel, yPixel, color);
 			}
@@ -43,6 +43,24 @@ public class FractalPartThread extends Thread {
 		}
 	}
 
+	private static double mapPixelWidthToRealAxis(int xPixel) {
+		double range = Main.maxReal - Main.minReal;
+
+		return xPixel * (range / Main.width) + Main.minReal;
+	}
+
+	private static double mapPixelHeightToImaginaryAxis(int yPixel) {
+		double range = Main.maxImaginary - Main.minImaginary;
+
+		return yPixel * (range / Main.height) + Main.minImaginary;
+	}
+
+	/**
+	 * calculates the number of steps for the given point
+	 * @param complexPoint point on the complex plane to check whether is in the fractal set
+	 * @return number of iterations until the sequence becomes unbounded and goes to infinity,
+	 * if 0 is returned, it means the sequence for the point converges and the point is in the fractal set
+	 */
 	private static int calculateNumberOfSteps(Complex complexPoint) {
 		final Complex z0 = new Complex(0.0, 0.0);
 		Complex zPrevious = z0;
@@ -64,46 +82,18 @@ public class FractalPartThread extends Thread {
 			}
 		}
 
-//		System.out.println("iter: " + iterations + "; " + zIteration.getReal() + ", " + zIteration.getImaginary());
-
 		return iterations;
 	}
 
+	// formula project num 17 : F(Z) = e^(cos(C*Z))
 	private static Complex calculateIterationTerm(Complex z, Complex constant) {
-//		formula project num 16 : F(Z) = C*e^(-Z) + Z^2
-		// Complex minusZ = z.multiply(-1);
-		// Complex exponentRaisedToTheMinusZ = minusZ.exp();
-		// Complex zSquared = z.multiply(z);
-
-		// return (constant.multiply(exponentRaisedToTheMinusZ)).add(zSquared);
-
-
-//		formula project num 17 : F(Z) = e^(cos(C*Z))
 		Complex constantTimesZ = constant.multiply(z);
 		Complex cosine = constantTimesZ.cos();
 
 		return cosine.exp();
-
-//		formula project num 19 : F(Z) = e^(Z^2 * C)
-//		Complex zSquared = z.multiply(z);
-//		Complex zSquaredTimesConstant = zSquared.multiply(constant);
-//
-//		return zSquaredTimesConstant.exp();
 	}
 
-	private static double mapPixelWidthToRealAxis(int xPixel) {
-		double range = Main.maxReal - Main.minReal;
-
-		return xPixel * (range / Main.width) + Main.minReal;
-	}
-
-	private static double mapPixelHeightToImaginaryAxis(int yPixel) {
-		double range = Main.maxImaginary - Main.minImaginary;
-
-		return yPixel * (range / Main.height) + Main.minImaginary;
-	}
-
-	private static int blackAndWhiteOutput(BufferedImage bufferedImage, int xPixel, int yPixel, int iterations) {
+	private static int blackAndWhiteOutput(int iterations) {
 		if (iterations == 0) {
 			return 0x000000;
 		}
@@ -112,7 +102,7 @@ public class FractalPartThread extends Thread {
 		}
 	}
 
-	private static int getIterationColor(BufferedImage bufferedImage, int xPixel, int yPixel, int iterations) {
+	private static int getIterationColor(int iterations) {
 		if (iterations == 0) {
 			return 0x00ff00;
 		}
@@ -175,6 +165,15 @@ public class FractalPartThread extends Thread {
 		}
 		else {
 			return 0xeeee00;
+		}
+	}
+
+	int getHSBToRGBColor(int numberOfIterations) {
+		if (numberOfIterations > Main.maxPointIterations || numberOfIterations == 0) {
+			return 0x000000; // black
+		}
+		else {
+			return Color.HSBtoRGB((float) 128 * numberOfIterations / Main.maxPointIterations, 0.67f, 1);
 		}
 	}
 

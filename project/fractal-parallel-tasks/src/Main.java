@@ -80,8 +80,7 @@ public class Main {
 //		catch (IOException ioException) {
 //			ioException.printStackTrace();
 //		}
-
-//		or maybe stop timer before image write?
+		
 		long finishTimestamp = Calendar.getInstance().getTimeInMillis();
 		long overallTime = finishTimestamp - startTimestamp;
 

@@ -24,12 +24,9 @@ public class FractalPartThread extends Thread {
         }
 
         while (true) {
-//            int rowAvailable = findFirstAvailableTask();
 			int rowAvailable = getTask();
 
             if (rowAvailable != -1) {
-//                markTaskAsTaken(rowAvailable);
-
 //                System.out.printf("thread %d working on row %d%n", index, rowAvailable);
 
                 int yPixel = rowAvailable;
@@ -62,6 +59,7 @@ public class FractalPartThread extends Thread {
     private synchronized int getTask() {
 		int index = tasks.indexOf(false);
 
+		// marks row as processed
 		if (index != -1) {
 			tasks.setElementAt(true, index);
 		}
@@ -69,21 +67,17 @@ public class FractalPartThread extends Thread {
 		return index;
 	}
 
-	/**
-	 * finds the first available row at the image to be processed
-	 * @return the index of the row to be processed, or -1 of all is taken
-	 */
-	private synchronized int findFirstAvailableTask() {
-		return tasks.indexOf(false);
+	private static double mapPixelWidthToRealAxis(int xPixel) {
+		double range = Main.maxReal - Main.minReal;
+
+		return xPixel * (range / Main.width) + Main.minReal;
 	}
 
-	/**
-	 * marks the given row as taken for calculation, and other rows should not take it
-	 * @param rowAvailable
-	 */
-	private synchronized void markTaskAsTaken(int rowAvailable) {
-        tasks.setElementAt(true, rowAvailable);
-    }
+	private static double mapPixelHeightToImaginaryAxis(int yPixel) {
+		double range = Main.maxImaginary - Main.minImaginary;
+
+		return yPixel * (range / Main.height) + Main.minImaginary;
+	}
 
 	/**
 	 * calculates the number of steps for the given point
@@ -97,7 +91,6 @@ public class FractalPartThread extends Thread {
 		Complex zIteration = null;
 		Double realPartOfZPrevious = null;
 
-		// maybe tweak maxIterations, 1000 is to much, maybe 500 or little bit less
 		int iterations = 0;
 		final int maxIterations = Main.maxPointIterations;
 
@@ -113,46 +106,16 @@ public class FractalPartThread extends Thread {
 			}
 		}
 
-//		System.out.println("iter: " + iterations + "; " + zIteration.getReal() + ", " + zIteration.getImaginary());
-
 		return iterations;
 	}
 
+//	formula project num 17 : F(Z) = e^(cos(C*Z))
 	private static Complex calculateIterationTerm(Complex z, Complex constant) {
-//		formula project num 16 : F(Z) = C*e^(-Z) + Z^2
-//		 Complex minusZ = z.multiply(-1);
-//		 Complex exponentRaisedToTheMinusZ = minusZ.exp();
-//		 Complex zSquared = z.multiply(z);
-
-		// return (constant.multiply(exponentRaisedToTheMinusZ)).add(zSquared);
-
-//		formula project num 17 : F(Z) = e^(cos(C*Z))
 		Complex constantTimesZ = constant.multiply(z);
+
 		Complex cosine = constantTimesZ.cos();
 
 		return cosine.exp();
-
-//		formula project num 19 : F(Z) = e^(Z^2 * C)
-//		Complex zSquared = z.multiply(z);
-//		Complex zSquaredTimesConstant = zSquared.multiply(constant);
-//
-//		return zSquaredTimesConstant.exp();
-	}
-
-	private static void printInfoAboutPoint(int xPixel, int yPixel, double realValue, double imaginaryValue, int r) {
-		System.out.printf("(%.9f, %.9f) to (%3d, %3d) => %d\n", realValue, imaginaryValue, xPixel, yPixel, r);
-	}
-
-	private static double mapPixelWidthToRealAxis(int xPixel) {
-		double range = Main.maxReal - Main.minReal;
-
-		return xPixel * (range / Main.width) + Main.minReal;
-	}
-
-	private static double mapPixelHeightToImaginaryAxis(int yPixel) {
-		double range = Main.maxImaginary - Main.minImaginary;
-
-		return yPixel * (range / Main.height) + Main.minImaginary;
 	}
 
 	private static int blackAndWhiteOutput(BufferedImage bufferedImage, int xPixel, int yPixel, int iterations) {
@@ -164,20 +127,15 @@ public class FractalPartThread extends Thread {
 		}
 	}
 
-	/**
-	 * get the pixel color, according to the number of steps
-	 * @param iterations number of iterations for a specific point
-	 * @return integer hex value, representing the pixel color, on 0 iterations green color is returned
-	 */
 	private static int getIterationColor(int iterations) {
 		if (iterations == 0) {
-			return 0x00ff00;
+			return 0x00ff00; // rgb(0,255,0), green
 		}
 		else if (iterations <= 10) {
-			return 0xFFFFFF;
+			return 0xFFFFFF; // rgb(255,255,255) white
 		}
 		else if (iterations == 11) {
-			return 0x0000ff;
+			return 0x0000ff; // rgb(0,0,255 blue
 		}
 		else if (iterations == 12) {
 			return 0x0000ee;
@@ -232,6 +190,15 @@ public class FractalPartThread extends Thread {
 		}
 		else {
 			return 0xeeee00;
+		}
+	}
+
+	int getHSBToRGBColor(int numberOfIterations) {
+		if (numberOfIterations > Main.maxPointIterations || numberOfIterations == 0) {
+			return 0x000000; // black
+		}
+		else {
+			return Color.HSBtoRGB((float) 128 * numberOfIterations / Main.maxPointIterations, 0.67f, 1);
 		}
 	}
 
