@@ -1,8 +1,6 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Calendar;
-import java.util.Queue;
-import java.util.Vector;
 import java.util.concurrent.ArrayBlockingQueue;
 
 import org.apache.commons.math3.complex.Complex;
@@ -10,9 +8,9 @@ import org.apache.commons.math3.complex.Complex;
 public class FractalPartThread extends Thread {
 	private final int index;
 	private final BufferedImage bufferedImage;
-	private final ArrayBlockingQueue<RowTask> tasks;
+	private final ArrayBlockingQueue<SegmentTask> tasks;
 
-	public FractalPartThread(int index, BufferedImage bufferedImage, ArrayBlockingQueue<RowTask> tasks) {
+	public FractalPartThread(int index, BufferedImage bufferedImage, ArrayBlockingQueue<SegmentTask> tasks) {
 		this.index = index;
 		this.bufferedImage = bufferedImage;
 		this.tasks = tasks;
@@ -27,43 +25,32 @@ public class FractalPartThread extends Thread {
         }
 
         while (!tasks.isEmpty()) {
-			RowTask rowTask = tasks.poll();
+			SegmentTask task = tasks.poll();
 
-            int yPixel = rowTask.getIndex();
+			for (int yPixel = task.heightStart; yPixel < task.heightEnd; yPixel++) {
+				double imaginaryValue = mapPixelHeightToImaginaryAxis(yPixel);
 
-            for (int xPixel = 0; xPixel < Main.width; xPixel++) {
-                double realValue = mapPixelWidthToRealAxis(xPixel);
-                double imaginaryValue = mapPixelHeightToImaginaryAxis(yPixel);
+				for (int xPixel = task.widthStart; xPixel < task.widthEnd; xPixel++) {
+					double realValue = mapPixelWidthToRealAxis(xPixel);
 
-                int numberOfSteps = calculateNumberOfSteps(new Complex(realValue, imaginaryValue));
+					int numberOfSteps = calculateNumberOfSteps(new Complex(realValue, imaginaryValue));
 
-                int color = getIterationColor(numberOfSteps);
+					int color = getHSBToRGBColor(numberOfSteps);
 
-                drawPixel(bufferedImage, xPixel, yPixel, color);
-            }
-        }
+					drawPixel(bufferedImage, xPixel, yPixel, color);
+				}
+			}
+		}
+		long threadFinishTimeStamp = System.currentTimeMillis();
+		long threadOverallTime = threadFinishTimeStamp - threadStartTimestamp;
 
-        long threadFinishTimeStamp = System.currentTimeMillis();
-        long threadOverallTime = threadFinishTimeStamp - threadStartTimestamp;
+		if (!Main.quietOutput) {
+			System.out.printf("Thread-%d stopped%n", index);
+			System.out.printf("Thread-%d execution time was (millis): %d%n", index, threadOverallTime);
+		}
 
-        if (!Main.quietOutput) {
-            System.out.printf("Thread-%d stopped%n", index);
-            System.out.printf("Thread-%d execution time was (millis): %d%n", index, threadOverallTime);
-        }
+		return;
     }
-
-
-	private static double mapPixelWidthToRealAxis(int xPixel) {
-		double range = Main.maxReal - Main.minReal;
-
-		return xPixel * (range / Main.width) + Main.minReal;
-	}
-
-	private static double mapPixelHeightToImaginaryAxis(int yPixel) {
-		double range = Main.maxImaginary - Main.minImaginary;
-
-		return yPixel * (range / Main.height) + Main.minImaginary;
-	}
 
 	/**
 	 * calculates the number of steps for the given point
@@ -77,6 +64,7 @@ public class FractalPartThread extends Thread {
 		Complex zIteration = null;
 		Double realPartOfZPrevious = null;
 
+		// maybe tweak maxIterations, 1000 is to much, maybe 500 or little bit less
 		int iterations = 0;
 		final int maxIterations = Main.maxPointIterations;
 
@@ -92,16 +80,33 @@ public class FractalPartThread extends Thread {
 			}
 		}
 
+//		System.out.println("iter: " + iterations + "; " + zIteration.getReal() + ", " + zIteration.getImaginary());
+
 		return iterations;
 	}
 
-//	formula project num 17 : F(Z) = e^(cos(C*Z))
 	private static Complex calculateIterationTerm(Complex z, Complex constant) {
+//		formula project num 17 : F(Z) = e^(cos(C*Z))
 		Complex constantTimesZ = constant.multiply(z);
-
 		Complex cosine = constantTimesZ.cos();
 
 		return cosine.exp();
+	}
+
+	private static void printInfoAboutPoint(int xPixel, int yPixel, double realValue, double imaginaryValue, int r) {
+		System.out.printf("(%.9f, %.9f) to (%3d, %3d) => %d\n", realValue, imaginaryValue, xPixel, yPixel, r);
+	}
+
+	private static double mapPixelWidthToRealAxis(int xPixel) {
+		double range = Main.maxReal - Main.minReal;
+
+		return xPixel * (range / Main.width) + Main.minReal;
+	}
+
+	private static double mapPixelHeightToImaginaryAxis(int yPixel) {
+		double range = Main.maxImaginary - Main.minImaginary;
+
+		return yPixel * (range / Main.height) + Main.minImaginary;
 	}
 
 	private static int blackAndWhiteOutput(BufferedImage bufferedImage, int xPixel, int yPixel, int iterations) {
@@ -113,15 +118,20 @@ public class FractalPartThread extends Thread {
 		}
 	}
 
+	/**
+	 * get the pixel color, according to the number of steps
+	 * @param iterations number of iterations for a specific point
+	 * @return integer hex value, representing the pixel color, on 0 iterations green color is returned
+	 */
 	private static int getIterationColor(int iterations) {
 		if (iterations == 0) {
-			return 0x00ff00; // rgb(0,255,0), green
+			return 0x00ff00;
 		}
 		else if (iterations <= 10) {
-			return 0xFFFFFF; // rgb(255,255,255) white
+			return 0xFFFFFF;
 		}
 		else if (iterations == 11) {
-			return 0x0000ff; // rgb(0,0,255 blue
+			return 0x0000ff;
 		}
 		else if (iterations == 12) {
 			return 0x0000ee;

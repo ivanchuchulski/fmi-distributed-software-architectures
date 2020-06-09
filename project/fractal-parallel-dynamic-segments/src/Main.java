@@ -1,9 +1,14 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Vector;
 import java.util.concurrent.ArrayBlockingQueue;
+
+import javax.imageio.ImageIO;
 
 import org.apache.commons.cli.*;
 
@@ -24,6 +29,8 @@ public class Main {
 
 	public static int maxPointIterations = 500;
 
+	public static int granularity = 1;
+
 	public static void main(String[] args) {
 		long startTimestamp = Calendar.getInstance().getTimeInMillis();
 
@@ -36,20 +43,45 @@ public class Main {
 		}
 
 		BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
-		ArrayList<FractalPartThread> fractalThreads = new ArrayList<>(threadCount);
-		ArrayBlockingQueue<RowTask> tasks = new ArrayBlockingQueue<>(Main.height, true);
 
-		// init image
 		Graphics2D graphics2D = bufferedImage.createGraphics();
 		graphics2D.setColor(Color.WHITE);
 		graphics2D.fillRect(0, 0, width - 1, height - 1);
 
-		// init tasks
-		for (int row = 0; row < Main.height; row++) {
-			tasks.add(new RowTask(row));
+		int heightStep = (int) Math.ceil((float)height / (threadCount * granularity));
+		int widthStep = (int)Math.ceil((float)width / (threadCount * granularity));
+
+		int segmentIDCounter = 0;
+		int threadIDCounter = 0;
+		int numberOfSegments = threadCount * granularity * threadCount * granularity;
+		ArrayBlockingQueue<SegmentTask> tasks = new ArrayBlockingQueue<>(numberOfSegments, true);
+
+		for (int heightCounter = 0; heightCounter < height; heightCounter += heightStep) {
+			for (int widthCounter = 0; widthCounter < width; widthCounter += widthStep) {
+				int heightEnd = heightCounter + heightStep;
+				int widthEnd = widthCounter +  widthStep;
+
+				if (heightEnd > height) {
+					heightEnd = height;
+				}
+
+				if (widthEnd > width) {
+					widthEnd = width;
+				}
+
+				SegmentTask segmentTask = new SegmentTask(segmentIDCounter, heightCounter, widthCounter, heightEnd, widthEnd);
+				tasks.add(segmentTask);
+				segmentIDCounter++;
+			}
 		}
 
-		for (int threadIndex = 1; threadIndex <= threadCount; threadIndex++) {
+//		for (SegmentTask task : tasks) {
+//			System.out.printf("%d %d %d %d%n", task.heightStart, task.heightEnd, task.widthStart, task.widthEnd);
+//		}
+//		System.exit(2);
+
+		ArrayList<FractalPartThread> fractalThreads = new ArrayList<>(threadCount);
+		for (int threadIndex = 0; threadIndex < threadCount; threadIndex++) {
 			FractalPartThread fractalPartThread = new FractalPartThread(threadIndex, bufferedImage, tasks);
 
 			fractalThreads.add(fractalPartThread);
@@ -70,13 +102,14 @@ public class Main {
 		graphics2D.setColor(Color.GRAY);
 		graphics2D.drawRect(0, 0, width - 2, height - 2);
 
-//		try {
-//			ImageIO.write(bufferedImage, "PNG", new File(outputFileName));
-//		}
-//		catch (IOException ioException) {
-//			ioException.printStackTrace();
-//		}
-		
+		try {
+			ImageIO.write(bufferedImage, "PNG", new File(outputFileName));
+		}
+		catch (IOException ioException) {
+			ioException.printStackTrace();
+		}
+
+//		or maybe stop timer before image write?
 		long finishTimestamp = Calendar.getInstance().getTimeInMillis();
 		long overallTime = finishTimestamp - startTimestamp;
 
@@ -95,8 +128,11 @@ public class Main {
 		options.addOption("t", true, "number of tasks(threads)");
 		options.addOption("o", true, "name of the output file");
 		options.addOption("q", false, "quiet running of program, without additional logs");
-		options.addOption("i", true, "number of iterations");
 		options.addOption("h", false, "print information about the program");
+
+		// for testing
+		options.addOption("i", true, "number of iterations");
+		options.addOption("g", true, "granularity");
 
 		CommandLineParser parser = new DefaultParser();
 		CommandLine commandLine = parser.parse(options, args);
@@ -134,6 +170,10 @@ public class Main {
 
 		if (commandLine.hasOption("i")) {
 			maxPointIterations = Integer.parseInt(commandLine.getOptionValue("i"));
+		}
+
+		if (commandLine.hasOption("g")) {
+			granularity = Integer.parseInt(commandLine.getOptionValue("g"));
 		}
 	}
 

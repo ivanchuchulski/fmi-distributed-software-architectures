@@ -48,8 +48,8 @@ public class Main {
 		graphics2D.setColor(Color.WHITE);
 		graphics2D.fillRect(0, 0, width - 1, height - 1);
 
-		int heightStep = height / (threadCount * granularity);
-		int widthStep = width / (threadCount * granularity);
+		int heightStep = (int) Math.ceil((float)height / (threadCount * granularity));
+		int widthStep = (int)Math.ceil((float)width / (threadCount * granularity));
 
 		int segmentIDCounter = 0;
 		int threadIDCounter = 0;
