@@ -1,18 +1,16 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Calendar;
-import java.util.Queue;
-import java.util.Vector;
-import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.apache.commons.math3.complex.Complex;
 
 public class FractalPartThread extends Thread {
 	private final int index;
 	private final BufferedImage bufferedImage;
-	private final ArrayBlockingQueue<RowTask> tasks;
+	private final ConcurrentLinkedQueue<RowTask> tasks;
 
-	public FractalPartThread(int index, BufferedImage bufferedImage, ArrayBlockingQueue<RowTask> tasks) {
+	public FractalPartThread(int index, BufferedImage bufferedImage, ConcurrentLinkedQueue<RowTask> tasks) {
 		this.index = index;
 		this.bufferedImage = bufferedImage;
 		this.tasks = tasks;
@@ -26,8 +24,12 @@ public class FractalPartThread extends Thread {
             System.out.printf("Thread-%d started.%n", index);
         }
 
-        while (!tasks.isEmpty()) {
+        while (true) {
 			RowTask rowTask = tasks.poll();
+
+			if (rowTask == null) {
+				break;
+			}
 
             int yPixel = rowTask.getIndex();
 
@@ -51,7 +53,6 @@ public class FractalPartThread extends Thread {
             System.out.printf("Thread-%d execution time was (millis): %d%n", index, threadOverallTime);
         }
     }
-
 
 	private static double mapPixelWidthToRealAxis(int xPixel) {
 		double range = Main.maxReal - Main.minReal;
@@ -184,7 +185,7 @@ public class FractalPartThread extends Thread {
 			return 0x000000; // black
 		}
 		else {
-			return Color.HSBtoRGB((float) 128 * numberOfIterations / Main.maxPointIterations, 0.67f, 1);
+			return Color.HSBtoRGB((float) 128 * numberOfIterations / Main.maxPointIterations, 0.34f, 1);
 		}
 	}
 

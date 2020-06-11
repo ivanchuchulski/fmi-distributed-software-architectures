@@ -1,9 +1,12 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import javax.imageio.ImageIO;
 
 import org.apache.commons.cli.*;
 
@@ -37,7 +40,7 @@ public class Main {
 
 		BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
 		ArrayList<FractalPartThread> fractalThreads = new ArrayList<>(threadCount);
-		ArrayBlockingQueue<RowTask> tasks = new ArrayBlockingQueue<>(Main.height, true);
+		ConcurrentLinkedQueue<RowTask> tasks = new ConcurrentLinkedQueue<>();
 
 		// init image
 		Graphics2D graphics2D = bufferedImage.createGraphics();
