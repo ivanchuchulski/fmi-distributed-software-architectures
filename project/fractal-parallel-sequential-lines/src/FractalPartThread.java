@@ -28,7 +28,7 @@ public class FractalPartThread extends Thread {
 
 				int numberOfSteps = calculateNumberOfSteps(new Complex(realValue, imaginaryValue));
 
-				int color = getIterationColor(numberOfSteps);
+				int color = getHSBToRGBColor(numberOfSteps);
 
 				drawPixel(bufferedImage, xPixel, yPixel, color);
 			}
@@ -169,11 +169,11 @@ public class FractalPartThread extends Thread {
 	}
 
 	int getHSBToRGBColor(int numberOfIterations) {
-		if (numberOfIterations > Main.maxPointIterations || numberOfIterations == 0) {
+		if (numberOfIterations == 0 || numberOfIterations > Main.maxPointIterations) {
 			return 0x000000; // black
 		}
 		else {
-			return Color.HSBtoRGB((float) 128 * numberOfIterations / Main.maxPointIterations, 0.67f, 1);
+			return Color.HSBtoRGB((float) 128 * numberOfIterations / Main.maxPointIterations, 0.5f, 1);
 		}
 	}
 

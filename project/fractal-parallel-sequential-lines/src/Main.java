@@ -39,21 +39,16 @@ public class Main {
 		}
 
 		BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
-
-		Graphics2D graphics2D = bufferedImage.createGraphics();
-		graphics2D.setColor(Color.WHITE);
-		graphics2D.fillRect(0, 0, width - 1, height - 1);
-
 		ArrayList<FractalPartThread> fractalThreads = new ArrayList<>(threadCount);
 
-		int threadsIndex = 0;
+		setColorAndFillRectangle(bufferedImage, Color.WHITE);
 
-		while (threadsIndex < threadCount) {
-			FractalPartThread fractalPartThread = new FractalPartThread(threadsIndex, bufferedImage);
+		for (int threadIndex = 0; threadIndex < threadCount; threadIndex++) {
+			FractalPartThread fractalPartThread = new FractalPartThread(threadIndex, bufferedImage);
+
 			fractalThreads.add(fractalPartThread);
 
 			fractalPartThread.start();
-			threadsIndex++;
 		}
 
 		// wait for all threads to finish their jobs
@@ -66,15 +61,12 @@ public class Main {
 			interruptedException.printStackTrace();
 		}
 
-		graphics2D.setColor(Color.GRAY);
-		graphics2D.drawRect(0, 0, width - 2, height - 2);
-
-		// try {
-		// 	ImageIO.write(bufferedImage, "PNG", new File(outputFileName));
-		// }
-		// catch (IOException ioException) {
-		// 	ioException.printStackTrace();
-		// }
+		 try {
+		 	ImageIO.write(bufferedImage, "PNG", new File(outputFileName));
+		 }
+		 catch (IOException ioException) {
+		 	ioException.printStackTrace();
+		 }
 
 		long finishTimestamp = Calendar.getInstance().getTimeInMillis();
 		long overallTime = finishTimestamp - startTimestamp;
@@ -142,5 +134,13 @@ public class Main {
 		HelpFormatter helpFormatter = new HelpFormatter();
 
 		helpFormatter.printHelp("runMe", header, options, footer);
+	}
+
+	private static void setColorAndFillRectangle(BufferedImage bufferedImage, Color color) {
+		Graphics2D graphics2D = bufferedImage.createGraphics();
+
+		graphics2D.setColor(color);
+		
+		graphics2D.fillRect(0, 0, Main.width - 1, Main.height - 1);
 	}
 }
