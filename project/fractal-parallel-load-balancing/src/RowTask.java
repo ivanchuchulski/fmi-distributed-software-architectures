@@ -1,11 +1,11 @@
 public class RowTask {
-    private int index;
+    private int rowIndex;
 
-    RowTask(int index) {
-        this.index = index;
+    RowTask(int rowIndex) {
+        this.rowIndex = rowIndex;
     }
 
-    public int getIndex() {
-        return index;
+    public int getRowIndex() {
+        return rowIndex;
     }
 }

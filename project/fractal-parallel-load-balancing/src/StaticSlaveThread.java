@@ -30,7 +30,7 @@ public class StaticSlaveThread extends Thread {
 
                 int color = getHSBToRGBColor(numberOfSteps);
 
-                drawPixel(bufferedImage, xPixel, yPixel, color);
+                drawPixel(xPixel, yPixel, color);
             }
         }
 
@@ -177,7 +177,7 @@ public class StaticSlaveThread extends Thread {
         }
     }
 
-    private synchronized void drawPixel(BufferedImage bufferedImage, int xPixel, int yPixel, int color) {
+    private synchronized void drawPixel(int xPixel, int yPixel, int color) {
         bufferedImage.setRGB(xPixel, yPixel, color);
     }
 }
