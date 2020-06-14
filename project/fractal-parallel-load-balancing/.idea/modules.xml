@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/pf-lci.iml" filepath="$PROJECT_DIR$/pf-lci.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fractal-parallel-load-balancing.iml" filepath="$PROJECT_DIR$/fractal-parallel-load-balancing.iml" />
     </modules>
   </component>
 </project>

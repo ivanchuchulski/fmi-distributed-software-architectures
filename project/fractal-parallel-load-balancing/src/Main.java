@@ -135,7 +135,7 @@ public class Main {
 		String footer = "author : Ivan Chuchulski\n";
 		HelpFormatter helpFormatter = new HelpFormatter();
 
-		helpFormatter.printHelp("runMe", header, options, footer);
+		helpFormatter.printHelp("runMe [option]...", header, options, footer);
 	}
 
 	private static void setColorAndFillRectangle(BufferedImage bufferedImage, Color color) {
