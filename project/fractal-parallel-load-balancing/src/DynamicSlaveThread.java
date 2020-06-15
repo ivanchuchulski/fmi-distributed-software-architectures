@@ -105,7 +105,7 @@ public class DynamicSlaveThread extends Thread {
 		return cosine.exp();
 	}
 
-	private static int blackAndWhiteOutput(BufferedImage bufferedImage, int xPixel, int yPixel, int iterations) {
+	private static int blackAndWhiteOutput(int iterations) {
 		if (iterations == 0) {
 			return 0x000000;
 		}
@@ -181,7 +181,7 @@ public class DynamicSlaveThread extends Thread {
 	}
 
 	private static int getHSBToRGBColor(int numberOfIterations) {
-		if (numberOfIterations > Main.maxPointIterations || numberOfIterations == 0) {
+		if (numberOfIterations == 0 || numberOfIterations > Main.maxPointIterations) {
 			return 0x000000; // black
 		}
 		else {

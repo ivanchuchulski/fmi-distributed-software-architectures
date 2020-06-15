@@ -168,7 +168,7 @@ public class StaticSlaveThread extends Thread {
         }
     }
 
-    int getHSBToRGBColor(int numberOfIterations) {
+    private static int getHSBToRGBColor(int numberOfIterations) {
         if (numberOfIterations == 0 || numberOfIterations > Main.maxPointIterations) {
             return 0x000000; // black
         }
