@@ -1,6 +1,0 @@
-thread is 1
-1
-thread is 2
-2
-thread is 3
-3
